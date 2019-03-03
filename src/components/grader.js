@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Buttons} from 'semantic-ui-react'
 
 class grader extends React.Component {
     constructor(props) {
@@ -6,7 +7,6 @@ class grader extends React.Component {
       this.state = {
           components: [{ name: "", weight: "", mark: "" }]
       };
-      this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     addClick(){
@@ -52,23 +52,6 @@ class grader extends React.Component {
        
     }
     
-    handleSubmit(event) {
-        event.preventDefault();
-        if (this.errorCheck() != ""){
-            if (this.errorCheck() == "nameError"){
-                alert ("name error")
-            }else if(this.errorCheck() == "weightError"){
-            alert ("weight error")
-            }else if(this.errorCheck() == "markError"){
-                alert ("mark error")
-            }else if(this.errorCheck() == "totalWeight"){
-                alert ("total weight error")
-            }
-        }else{
-            this.marker();
-            this.output()
-        }
-    }
 
     //calculates final mark
     marker(){
@@ -89,9 +72,7 @@ class grader extends React.Component {
         var errorMessage = "";
         var components = this.state.components;
         for (let i = 0; i < components.length; i++){
-            if (components[i].name == ""){
-                errorMessage = "nameError";
-            }else if (components[i]. weight == "" || components[i].weight < 0){
+            if (components[i]. weight == "" || components[i].weight < 0){
                 errorMessage = "weightError";
             }else if (components[i]. mark == "" || components[i].mark < 0 || components[i].mark > 100 ){
                 errorMessage = "markError";
@@ -113,11 +94,11 @@ class grader extends React.Component {
     
     render() {
       return (
-        <form>
-            <input type='button' value='+' onClick={this.addClick.bind(this)}/>
+        <div>
+            <button class="ui inverted black button" onClick={this.addClick.bind(this)}>add</button>
             {this.createUI()}
             {this.output()}
-        </form>
+        </div>
       );
     }
   }
