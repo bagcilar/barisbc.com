@@ -5,14 +5,9 @@ class home extends Component {
   render() {
     return (
 
-
-
       <div>
         <p>this is the home page</p>
       </div>
-
-
-
 
 );
   }

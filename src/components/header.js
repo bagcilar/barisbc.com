@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
-import './css/App.css';
+import './css/header.css';
+
+
+
+function getPath{
+
+    return this.props.location.pathname;
+
+}
+
 
 class header extends Component {
   
@@ -9,15 +18,15 @@ class header extends Component {
 
     
 
-        
+
     return (
 
 
 
       <div>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/projects">Projects</NavLink>
-        <NavLink to="/info">Info</NavLink>
+        <NavLink to="/" id="homeNav">Home</NavLink>
+        <NavLink to="/projects" id="projectsNav">Projects</NavLink>
+        <NavLink to="/info" id="infoNav">Info</NavLink>
       </div>
 
 

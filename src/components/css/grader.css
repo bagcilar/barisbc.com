@@ -3,3 +3,20 @@
     color:red;
 }
 
+#addButton, #resetButton{
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+  }
+  
+  #markField, #weightField{
+    width: 100px;
+  }
+  
+  #finalMarkOutput, #lostFeedbackOutput{
+    font-size: 20px;
+  }
+  
+  #finalMarkText, #lostFeedbackText{
+    font-size: 20px;
+  }

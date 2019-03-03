@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './css/App.css';
+import './css/footer.css';
 
 class footer extends Component {
   render() {
@@ -8,8 +8,8 @@ class footer extends Component {
 
 
       <div>
-        <a href="https://github.com/bagcilar" target="_blank" >GitHub</a>
-        <a href="https://www.linkedin.com/in/baris-bagcilar-361b42108/" target="_blank">LinkedIn</a>
+        <a id="gitNav" href="https://github.com/bagcilar" target="_blank" >GitHub</a>
+        <a id="linkedinNav" href="https://www.linkedin.com/in/baris-bagcilar-361b42108/" target="_blank">LinkedIn</a>
       </div>
 
 
