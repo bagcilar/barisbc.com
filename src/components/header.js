@@ -9,7 +9,6 @@ class header extends Component {
 
 
     if (window.location.pathname == "/"){
-
       return (
         <div className="headerDiv">
           <NavLink to="/" className="homeNav" style={{borderBottom: "2px solid", borderBottomColor: "red"}}>Home</NavLink>
@@ -19,19 +18,18 @@ class header extends Component {
       );
 
       }else if (window.location.pathname == "/info"){
-
         return (
           <div className="headerDiv">
-          <NavLink to="/" className="homeNav">Home</NavLink>
+            <NavLink to="/" className="homeNav">Home</NavLink>
             <NavLink to="/projects" className="projectsNav">Projects</NavLink>
             <NavLink to="/info" className="infoNav"style={{borderBottom: "2px solid", borderBottomColor: "red"}}>Info</NavLink>
           </div>
         );
+        
       }else if (window.location.pathname == "/projects" || window.location.pathname == "/grader"){
-
         return (
           <div className="headerDiv">
-          <NavLink to="/" className="homeNav">Home</NavLink>
+            <NavLink to="/" className="homeNav">Home</NavLink>
             <NavLink to="/projects" className="projectsNav"style={{borderBottom: "2px solid", borderBottomColor: "red"}}>Projects</NavLink>
             <NavLink to="/info" className="infoNav">Info</NavLink>
           </div>

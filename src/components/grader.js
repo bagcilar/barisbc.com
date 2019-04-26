@@ -15,6 +15,21 @@ class grader extends React.Component {
         components: [...prevState.components, { name: "", weight: "", mark: "" }]
       }))
     }
+
+    removeClick(i){
+        let components = [...this.state.components];
+        if (components.length != 1){
+         components.splice(i, 1);
+         this.setState({ components });
+        }
+    }
+
+    handleChange(i, e) {
+        const { name, value } = e.target;
+      let components = [...this.state.components];
+      components[i] = {...components[i], [name]: value};
+      this.setState({ components });
+   }
     
     createUI(){
         return this.state.components.map((el, i) => (
@@ -49,22 +64,6 @@ class grader extends React.Component {
                 </tr>
             </table>  
         )
-    }
-    
-    handleChange(i, e) {
-         const { name, value } = e.target;
-       let components = [...this.state.components];
-       components[i] = {...components[i], [name]: value};
-       this.setState({ components });
-    }
-    
-    removeClick(i){
-       let components = [...this.state.components];
-       if (components.length != 1){
-        components.splice(i, 1);
-        this.setState({ components });
-       }
-       
     }
 
     reset(i){
@@ -135,6 +134,6 @@ class grader extends React.Component {
         </div>
       );
     }
-  }
+}
   
 export default grader;

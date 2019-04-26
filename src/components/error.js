@@ -11,9 +11,6 @@ class error extends Component {
         <p>oops! page not found...</p>
       </div>
 
-
-
-
 );
   }
 }
