@@ -1,0 +1,9 @@
+.WelcomeMessage{
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.Greeting{
+    font-size: calc(1px + 2vmin);
+    color: white;
+}
