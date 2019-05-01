@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, Button} from 'semantic-ui-react'
+import {Form, Button, Divider} from 'semantic-ui-react'
 import './css/grader.css';
 
 class grader extends React.Component {
@@ -35,17 +35,23 @@ class grader extends React.Component {
         return this.state.components.map((el, i) => (
             <div class="ui form" key={i}>
                 
-                <div class="inline fields">
-                    <div class= "field">
-                        <input className = "nameField" type= "text" placeholder="name" name="name" value={el.name ||''} onChange={this.handleChange.bind(this, i)} />
-                    </div>
+                <div class="inline fields" className="UIComponents">
+                    
                     <div class="field">
-                        <input id="weightField" className = "weightField" type= "number" placeholder="weight" name="weight" value={el.weight ||''} onChange={this.handleChange.bind(this, i)} />
+                        <input id="nameField" type= "text" placeholder="name" name="name" value={el.name ||''} onChange={this.handleChange.bind(this, i)} />
                     </div>
-                    <div class="field">
-                        <input id="markField" type = "number" placeholder="mark" name="mark" value={el.mark ||''} onChange={this.handleChange.bind(this, i)} />
+                    
+                    <div className="WeightMarkInputs">
+                        <div class="field">
+                            <input id="weightField" className = "weightField" type= "number" placeholder="weight" name="weight" value={el.weight ||''} onChange={this.handleChange.bind(this, i)} />
+                        </div>
+                        <div class="field">
+                            <input id="markField" type = "number" placeholder="mark" name="mark" value={el.mark ||''} onChange={this.handleChange.bind(this, i)} />
+                        </div>
                     </div>
-                        <button class="ui inverted red button" onClick={this.removeClick.bind(this, i)}>remove</button>
+
+                    <button class="ui inverted red button" id="removeButton" onClick={this.removeClick.bind(this, i)}>remove</button>
+               
                 </div>
             </div>         
        ))
@@ -53,6 +59,7 @@ class grader extends React.Component {
 
     output(){
         return(
+
             <table className = "output">
                 <tr>
                     <td id="finalMarkText">Final Mark: </td>
@@ -63,6 +70,7 @@ class grader extends React.Component {
                     <td id="lostFeedbackOutput">{this.lostFeedback()}</td>
                 </tr>
             </table>  
+
         )
     }
 
@@ -126,11 +134,22 @@ class grader extends React.Component {
     
     render() {
       return (
+
         <div className="graderDiv">
-            {this.output()}
-            <button id="addButton" class="ui inverted primary button" onClick={this.addClick.bind(this)}>add</button>
-            <button id="resetButton" class="ui inverted grey button" onClick={this.reset.bind(this)}>reset</button>
-            {this.createUI()}
+
+            <div class="ui segment">
+            
+                {this.output()}
+                
+                <div className = "AddResetButtons">
+                    <button className="AddButton" class="ui primary button" onClick={this.addClick.bind(this)}>add</button>
+                    <button className="ResetButton" class="ui grey button" onClick={this.reset.bind(this)}>reset</button>
+                </div>
+
+                {this.createUI()}
+
+            </div>
+
         </div>
       );
     }

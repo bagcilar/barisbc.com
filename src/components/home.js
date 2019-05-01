@@ -16,7 +16,10 @@ class home extends Component {
           <p align="center">these projects are mostly for learning purposes and are not meant to reinvent the wheel</p>
           <p align="center">stay tuned for more to come...</p>
         </div>
-        
+
+
+
+              
       </div>
       
 
