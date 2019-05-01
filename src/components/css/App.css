@@ -1,15 +1,11 @@
 .App{
-  position:relative;
+  position: relative;
   min-height: 100vh;
 }
 
 .content{
   padding-bottom: 5rem;
-  padding-top: 5rem;
   margin: 0 auto;
-  width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
 }
 
 a {

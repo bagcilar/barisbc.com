@@ -22,21 +22,25 @@ class home extends Component {
     return (
 
 
-        <div className = "HomePage">
+      <div className = "HomePage">
 
-          <div className="WelcomeMessage">
-            <p align="center">{greeter()}</p>
-            <p align="center">welcome to barisbc.com!</p>
+        <div className="HomeUpperSection">
+          <div className="WelcomeMessageDiv">
+            <p id="timeGreeting" align="center">{greeter()}</p>
+            <p id="welcomeMessage" align="center">welcome to barisbc.com</p>
+            <div class="ui divider" id="homePageUpperDivider"></div>
           </div>
+        </div>
 
-          <div className="GreetingMessage">
+        <div className="HomeLowerSection">
+          <div className="GreetingMessageDiv">
             <p id="firstLine" align="center">on this website, I host some projects that I am working on</p>
             <p id="secondLine" align="center">these projects are mostly for learning purposes and are not meant to reinvent the wheel</p>
             <p id="thirdLine" align="center">stay tuned for more to come...</p>    
           </div>
-
         </div>
 
+      </div>
 
 
 );

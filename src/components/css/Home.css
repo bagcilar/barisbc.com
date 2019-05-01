@@ -1,19 +1,47 @@
-.WelcomeMessage{
-    display: flex;
-    flex-direction: column;
-    font-size: 200%;
-    padding: 10%;
-}
-
-.GreetingMessage{
+.HomeUpperSection{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+    background-color:  rgb(36, 39, 49);
+}
+
+.HomeLowerSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.WelcomeMessageDiv{
+    padding-top: 6%;
+    color: white;
+}
+
+#welcomeMessage{
+    font-size: 270%;
+}
+
+#timeGreeting{
+    font-size: 600%;
+}
+
+
+.GreetingMessageDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding-top: 6%;
+    padding-bottom: 6%;
     font-size: 140%;
 }
 
 .HomePage{
-    display: flex;
-    flex-direction: column;
     background-color: white;
 }
 
