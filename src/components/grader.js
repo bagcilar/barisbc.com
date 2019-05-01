@@ -60,26 +60,28 @@ class grader extends React.Component {
     output(){
         return(
 
-            <div className = "output">
+            <div className = "Output">
                 <div>
                     <p>Final Mark: {this.marker()}</p>
                 </div>
                 <div>
-                    <p>Lost: {this.lostFeedback()}</p>
+                    <p>Lost So Far: {this.lostFeedback()}</p>
                 </div>
             </div>  
 
         )
     }
 
-    reset(i){
+    reset(){
         let components = [...this.state.components];
-        if (components.length != 1){
-        components.splice(0, components.length - 1);
-        this.setState({ components });
+        if (components.length > 1){
+          components.splice(0, components.length - 1);
         }
-        
-     }
+        components[0].weight = "";
+        components[0].name = "";
+        components[0].mark = "";
+        this.setState({ components });     
+      }
     
     //calculates final mark
     marker(){

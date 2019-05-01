@@ -44,5 +44,9 @@
   flex-direction: column;
   align-items: center;
   justify-items: center;
-  margin-bottom: 20%;
+  margin-bottom: 15%;
+}
+
+.Output{
+  font-size: 125%;
 }
