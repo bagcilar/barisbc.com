@@ -1,20 +1,22 @@
 .WelcomeMessage{
+    display: flex;
+    flex-direction: column;
     font-size: 200%;
-    margin-bottom: 20%;
+    padding: 10%;
 }
 
 .GreetingMessage{
+    display: flex;
+    flex-direction: row;
     font-size: 140%;
-    margin-top: 5%;
 }
 
 .HomePage{
     display: flex;
-    align-items: center;
-    justify-items: center;
     flex-direction: column;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
     background-color: white;
+}
+
+#firstLine, #secondLine, #thirdLine{
+    padding: 5%;
 }

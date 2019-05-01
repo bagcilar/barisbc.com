@@ -60,16 +60,14 @@ class grader extends React.Component {
     output(){
         return(
 
-            <table className = "output">
-                <tr>
-                    <td id="finalMarkText">Final Mark: </td>
-                    <td id="finalMarkOutput">{this.marker()}</td>
-                </tr>
-                <tr>
-                    <td id="lostFeedbackText">Lost: </td>
-                    <td id="lostFeedbackOutput">{this.lostFeedback()}</td>
-                </tr>
-            </table>  
+            <div className = "output">
+                <div>
+                    <p>Final Mark: {this.marker()}</p>
+                </div>
+                <div>
+                    <p>Lost: {this.lostFeedback()}</p>
+                </div>
+            </div>  
 
         )
     }
@@ -87,12 +85,13 @@ class grader extends React.Component {
     marker(){
         let components = [...this.state.components];
         var finalGrade = 0;
+
         for (let i = 0; i < components.length; i++){
             finalGrade += (components[i].weight / 100) * components[i].mark
         }
         
         if (this.errorCheck() == ""){
-            return finalGrade;
+            return Math.round(finalGrade * 100) / 100;
         }else{
             return null;
         }
@@ -116,19 +115,21 @@ class grader extends React.Component {
         var totalWeight = 0;
 
         for (let i = 0; i < components.length; i++){
-            totalWeight = totalWeight + parseFloat(components[i].weight);
+          totalWeight = totalWeight + parseFloat(components[i].weight);
         }
         if (totalWeight != 100){
-            errorMessage = "totalWeight";
+          errorMessage = "totalWeight";
         }
-
+       
         for (let i = 0; i < components.length; i++){
-            if (components[i]. weight == "" || components[i].weight < 0){
+ 
+            if (components[i]. weight == "" || components[i].weight < 1 || components[i].weight > 100){
                 errorMessage = "weightError";
-            }else if (components[i]. mark == "" || components[i].mark < 0 || components[i].mark > 100 ){
+            }else if (components[i]. mark == "" || components[i].mark < 1){
                 errorMessage = "markError";
             }
         }
+
         return errorMessage;
     }
     
