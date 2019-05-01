@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import './css/footer.css';
 
-class footer extends Component {
-  render() {
 
+class Footer extends Component {
+  render() {
     return (
 
-      <div>
-        <a id="gitNav" href="https://github.com/bagcilar" target="_blank" >GitHub</a>
-        <a id="linkedinNav" href="https://www.linkedin.com/in/baris-bagcilar-361b42108/" target="_blank">LinkedIn</a>
-      </div>
 
-);
+          <div className="FooterDiv">
+            <div className="FooterInnerDiv">
+              <a href="https://github.com/bagcilar" className="GitNav" target="_blank">GitHub</a>
+              <a href="https://ca.linkedin.com/in/baris-bagcilar-361b42108" className="LinkNav" target="_blank">Linkedin</a>
+            </div>
+          </div>
+
+    );
   }
 }
 
-export default footer;
+export default Footer;

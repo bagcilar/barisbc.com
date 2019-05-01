@@ -7,32 +7,41 @@ class header extends Component {
   
   render() {
 
-
+  
+  
     if (window.location.pathname == "/"){
       return (
-        <div className="headerDiv">
-          <NavLink to="/" className="homeNav" style={{borderBottom: "1px solid", borderBottomColor: "red"}}>Home</NavLink>
-          <NavLink to="/projects" className="projectsNav">Projects</NavLink>
-          <NavLink to="/info" className="infoNav">Info</NavLink>
+        <div className="HeaderDiv">
+          <div className="HeaderInnerDiv">
+            <NavLink to="/" className="HomeNav" style={{borderBottom: "1px solid", borderBottomColor: "red"}}>Home</NavLink>
+            <NavLink to="/projects" className="ProjectsNav">Projects</NavLink>
+            <NavLink to="/info" className="InfoNav">Info</NavLink>
+          </div>
         </div>
+
       );
 
       }else if (window.location.pathname == "/info"){
         return (
-          <div className="headerDiv">
-            <NavLink to="/" className="homeNav">Home</NavLink>
-            <NavLink to="/projects" className="projectsNav">Projects</NavLink>
-            <NavLink to="/info" className="infoNav"style={{borderBottom: "1px solid", borderBottomColor: "red"}}>Info</NavLink>
+          <div className="HeaderDiv">
+            <div className="HeaderInnerDiv">
+              <NavLink to="/" className="HomeNav">Home</NavLink>
+              <NavLink to="/projects" className="ProjectsNav">Projects</NavLink>
+              <NavLink to="/info" className="InfoNav"style={{borderBottom: "1px solid", borderBottomColor: "red"}}>Info</NavLink>
+            </div>
           </div>
         );
         
       }else if (window.location.pathname == "/projects" || window.location.pathname == "/grader"){
         return (
-          <div className="headerDiv">
-            <NavLink to="/" className="homeNav">Home</NavLink>
-            <NavLink to="/projects" className="projectsNav"style={{borderBottom: "1px solid", borderBottomColor: "red"}}>Projects</NavLink>
-            <NavLink to="/info" className="infoNav">Info</NavLink>
+          <div className="HeaderDiv">
+            <div className="HeaderInnerDiv">
+              <NavLink to="/" className="HomeNav">Home</NavLink>
+              <NavLink to="/projects" className="ProjectsNav"style={{borderBottom: "1px solid", borderBottomColor: "red"}}>Projects</NavLink>
+              <NavLink to="/info" className="InfoNav">Info</NavLink>
+            </div>
           </div>
+
         );
       }
 

@@ -1,5 +1,22 @@
-#gitNav, #linkedinNav{
-    font-size: 15px;
-    padding: 10px;
-    text-decoration: none;
+.FooterDiv{
+    background-color:  rgb(36, 39, 49);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    bottom: 0;
+    height: 15vh;
+    position: absolute;
+    width: 100%;
+}
+
+.FooterInnerDiv{
+    margin: 0 auto;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.GitNav, .LinkNav{
+    padding: 3%;
+    color:white;
 }

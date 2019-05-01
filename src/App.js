@@ -11,7 +11,7 @@ import Home from './components/home.js';
 import Projects from './components/projects.js';
 import Info from './components/info.js';
 import Grader from './components/grader.js';
-import PageError from './components/error.js';
+import Error from './components/error.js';
 
 
 
@@ -24,19 +24,23 @@ class App extends Component {
 
         <div className="App">
 
-          <Header />
+          <div>
+            <Header />
+          </div>
 
+          <div className="content">
+            <Switch>
+              <Route path="/" component={Home} exact/> 
+              <Route path="/projects" component={Projects} /> 
+              <Route path="/grader" component={Grader} /> 
+              <Route path="/info" component={Info} />
+              <Route component={Error} /> 
+            </Switch>
+          </div>
 
-          <Switch>
-            <Route exact path="/" component={Home}/> 
-            <Route exact path="/projects" component={Projects}/> 
-            <Route exact path="/grader" component={Grader}/> 
-            <Route exact path="/info" component={Info} />
-            <Route component={PageError} /> 
-          </Switch>
-        
-
-          <Footer />
+          <div>
+           <Footer />
+          </div>
 
         </div>
 
