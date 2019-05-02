@@ -34,8 +34,7 @@ class home extends Component {
 
         <div className="HomeLowerSection">
           <div className="GreetingMessageDiv">
-            <p id="firstLine" align="center">on this website, I host some projects that I am working on</p>
-            <p id="secondLine" align="center">these projects are mostly for learning purposes and are not meant to reinvent the wheel</p>
+            <p id="firstLine" align="center">on this website, I host some projects created for learning purposes</p>
             <p id="thirdLine" align="center">stay tuned for more to come...</p>    
           </div>
         </div>
