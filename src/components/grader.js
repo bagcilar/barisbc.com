@@ -62,10 +62,19 @@ class grader extends React.Component {
        ))
     }
 
+    addResetButtons(){
+        return(
+            <div className = "AddResetButtons">
+                <button className="AddButton" class="ui primary button" onClick={this.addClick.bind(this)}>add</button>
+                <button className="ResetButton" class="ui grey button" onClick={this.reset.bind(this)}>reset</button>
+            </div>
+        )
+    }
+
     output(){
         return(
 
-            <div className = "Output">
+            <div id="Output" class="ui segment" >
                 <div>
                     <p>Final Mark: {this.marker()}</p>
                 </div>
@@ -80,8 +89,14 @@ class grader extends React.Component {
         return (
 
             <div className="schemeSelectors" onChange={this.setScheme.bind(this)}>
-              <input type="radio" name="schemeRadioButton" value="percentage" checked={this.state.markingScheme == 'percentage'}/>Percentage
-              <input type="radio" name="schemeRadioButton" value="mark" checked={this.state.markingScheme == 'mark'}/>Mark
+                <div id="percentageRadio">
+                    <input type="radio" name="schemeRadioButton" value="percentage" checked={this.state.markingScheme == 'percentage'}/>
+                    <label>Percentage</label>
+                </div>
+                <div id="markRadio">
+                    <input type="radio" name="schemeRadioButton" value="mark" checked={this.state.markingScheme == 'mark'}/>
+                    <label>Mark</label>
+                </div>
             </div>
            )
     }
@@ -167,23 +182,16 @@ class grader extends React.Component {
 
         <div className="graderDiv">
 
-            <div class="ui segment">
-            
-
-                {this.output()}
-
-                {this.selectScheme()}
-
-                <div className = "AddResetButtons">
-                    <button className="AddButton" class="ui primary button" onClick={this.addClick.bind(this)}>add</button>
-                    <button className="ResetButton" class="ui grey button" onClick={this.reset.bind(this)}>reset</button>
+            <div id="UI" class="ui segment">
+                <div className="UITop">
+                    {this.addResetButtons()}
+                    {this.selectScheme()}
                 </div>
-
                 {this.createUI()}
-
-
             </div>
-
+            
+            {this.output()}
+        
         </div>
       );
     }
