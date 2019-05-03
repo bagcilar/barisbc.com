@@ -6,7 +6,8 @@ class grader extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-          components: [{ name: "", weight: "", mark: "" }]
+          components: [{ name: "", weight: "", mark: "" }],
+          markingScheme: 'percentage'
       };
     }
     
@@ -24,12 +25,16 @@ class grader extends React.Component {
         }
     }
 
-    handleChange(i, e) {
+    handleChange(i, e){
         const { name, value } = e.target;
-      let components = [...this.state.components];
-      components[i] = {...components[i], [name]: value};
-      this.setState({ components });
+        let components = [...this.state.components];
+        components[i] = {...components[i], [name]: value};
+        this.setState({ components });
    }
+
+    setScheme (e){
+        this.setState({ markingScheme: e.target.value});
+    }
     
     createUI(){
         return this.state.components.map((el, i) => (
@@ -68,8 +73,17 @@ class grader extends React.Component {
                     <p>Lost So Far: {this.lostFeedback()}</p>
                 </div>
             </div>  
-
         )
+    }
+
+    selectScheme(){
+        return (
+
+            <div className="schemeSelectors" onChange={this.setScheme.bind(this)}>
+              <input type="radio" name="schemeRadioButton" value="percentage" checked={this.state.markingScheme == 'percentage'}/>Percentage
+              <input type="radio" name="schemeRadioButton" value="mark" checked={this.state.markingScheme == 'mark'}/>Mark
+            </div>
+           )
     }
 
     reset(){
@@ -83,13 +97,19 @@ class grader extends React.Component {
         this.setState({ components });     
       }
     
+
     //calculates final mark
     marker(){
         let components = [...this.state.components];
         var finalGrade = 0;
 
         for (let i = 0; i < components.length; i++){
-            finalGrade += (components[i].weight / 100) * components[i].mark
+
+            if (this.state.markingScheme == 'percentage'){
+                finalGrade += (components[i].weight / 100) * components[i].mark;
+            }else{
+                finalGrade += components[i].mark * 1;
+            }
         }
         
         if (this.errorCheck() == ""){
@@ -105,7 +125,12 @@ class grader extends React.Component {
         var lost = 0;
         for (let i = 0; i < components.length; i++){
             if (components[i].weight != "" && components[i].mark != ""){
-                lost += components[i].weight - (components[i].weight / 100) * components[i].mark
+
+                if (this.state.markingScheme == 'percentage'){
+                    lost += components[i].weight - (components[i].weight / 100) * components[i].mark;
+                }else{
+                    lost += components[i].weight - components[i].mark;
+                }
             }
         }
         return lost;
@@ -127,7 +152,7 @@ class grader extends React.Component {
  
             if (components[i]. weight == "" || components[i].weight < 1 || components[i].weight > 100){
                 errorMessage = "weightError";
-            }else if (components[i]. mark == "" || components[i].mark < 1){
+            }else if (components[i]. mark == "" || components[i].mark < 0){
                 errorMessage = "markError";
             }
         }
@@ -135,21 +160,27 @@ class grader extends React.Component {
         return errorMessage;
     }
     
+
     render() {
+
       return (
 
         <div className="graderDiv">
 
             <div class="ui segment">
             
+
                 {this.output()}
-                
+
+                {this.selectScheme()}
+
                 <div className = "AddResetButtons">
                     <button className="AddButton" class="ui primary button" onClick={this.addClick.bind(this)}>add</button>
                     <button className="ResetButton" class="ui grey button" onClick={this.reset.bind(this)}>reset</button>
                 </div>
 
                 {this.createUI()}
+
 
             </div>
 
