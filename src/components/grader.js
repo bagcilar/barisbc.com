@@ -19,7 +19,7 @@ class grader extends React.Component {
 
     removeClick(i){
         let components = [...this.state.components];
-        if (components.length != 1){
+        if (components.length !== 1){
          components.splice(i, 1);
          this.setState({ components });
         }
@@ -72,15 +72,42 @@ class grader extends React.Component {
     }
 
     output(){
+
+        var reportArray = this.report();
+
         return(
 
-            <div id="Output" class="ui segment" >
+            <div id="outputFields" class="ui segment">
                 <div>
                     <p>Final Mark: {this.marker()}</p>
                 </div>
+
+                <div class="ui divider" id="homePageUpperDivider"></div>
+
                 <div>
                     <p>Lost So Far: {this.lostFeedback()}</p>
                 </div>
+                <div>
+                    <p>Accumulated: {this.accumulatedFeedback()}</p>
+                </div>
+
+                <div class="ui divider" id="homePageUpperDivider"></div>
+
+
+                <div>
+                    <p>%95: {reportArray[0]}</p>
+                    <p>%90: {reportArray[1]}</p>
+                    <p>%85: {reportArray[2]}</p>
+                    <p>%90: {reportArray[3]}</p>
+                    <p>%75: {reportArray[4]}</p>
+                    <p>%70: {reportArray[5]}</p>
+                    <p>%65: {reportArray[6]}</p>
+                    <p>%60: {reportArray[7]}</p>
+                    <p>%55: {reportArray[8]}</p>
+                    <p>%50: {reportArray[9]}</p>
+                </div>
+
+
             </div>  
         )
     }
@@ -88,13 +115,13 @@ class grader extends React.Component {
     selectScheme(){
         return (
 
-            <div className="schemeSelectors" onChange={this.setScheme.bind(this)}>
+            <div className="schemeSelectors">
                 <div id="percentageRadio">
-                    <input type="radio" name="schemeRadioButton" value="percentage" checked={this.state.markingScheme == 'percentage'}/>
+                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value="percentage" checked={this.state.markingScheme === 'percentage'}/>
                     <label>Percentage</label>
                 </div>
                 <div id="markRadio">
-                    <input type="radio" name="schemeRadioButton" value="mark" checked={this.state.markingScheme == 'mark'}/>
+                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value="mark" checked={this.state.markingScheme === 'mark'}/>
                     <label>Mark</label>
                 </div>
             </div>
@@ -120,14 +147,14 @@ class grader extends React.Component {
 
         for (let i = 0; i < components.length; i++){
 
-            if (this.state.markingScheme == 'percentage'){
+            if (this.state.markingScheme === 'percentage'){
                 finalGrade += (components[i].weight / 100) * components[i].mark;
             }else{
                 finalGrade += components[i].mark * 1;
             }
         }
         
-        if (this.errorCheck() == ""){
+        if (this.errorCheck() === ""){
             return Math.round(finalGrade * 100) / 100;
         }else{
             return null;
@@ -139,16 +166,86 @@ class grader extends React.Component {
         let components = [...this.state.components];
         var lost = 0;
         for (let i = 0; i < components.length; i++){
-            if (components[i].weight != "" && components[i].mark != ""){
+            if (components[i].weight !== "" && components[i].mark !== ""){
 
-                if (this.state.markingScheme == 'percentage'){
+                if (this.state.markingScheme === 'percentage'){
                     lost += components[i].weight - (components[i].weight / 100) * components[i].mark;
                 }else{
                     lost += components[i].weight - components[i].mark;
                 }
             }
         }
-        return lost;
+        return Math.round(lost * 100) / 100;
+    }
+
+    //calculates accumulated marks
+    accumulatedFeedback(){
+        let components = [...this.state.components];
+        var acc = 0;
+        for (let i = 0; i < components.length; i++){
+
+            if (components[i].weight !== "" && components[i].mark !== ""){
+
+                if (this.state.markingScheme === 'percentage'){
+                    acc += components[i].weight / 100 * components[i].mark;
+                }else{
+                    acc += components[i].mark * 1;
+                }
+            }
+        }
+        return Math.round(acc * 100) / 100;
+    }
+
+    report(){
+        let components = [...this.state.components];
+        var totalAccumulated = this.accumulatedFeedback();
+        var totalEnteredWeight = 0;
+        var totalUnmarkedWeight = 0;
+        var unmarkedWeights = [];
+        var report = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
+
+
+        for (let i = 0; i < components.length; i++){
+            if (components[i].weight !== "" && components[i].mark === ""){
+                unmarkedWeights.push(i);
+            }
+            totalEnteredWeight += components[i].weight * 1;
+        }
+
+        //calculate the report based on remaining weights
+        if (totalEnteredWeight !== 100){
+            totalUnmarkedWeight = 100 - totalEnteredWeight;
+
+        //calculate the report based on remaining unmarked weights
+        }else if (unmarkedWeights.length > 0){
+            for (let i = 0; i < unmarkedWeights.length; i++){
+                totalUnmarkedWeight += components[unmarkedWeights[i]].weight * 1;
+            }
+        }
+
+        if (totalEnteredWeight === 100 && this.errorCheck() !== ""){
+            var index = 0;
+            var cutoff;
+            for (let i = 94.5; i > 49; i-=5){
+
+                if (this.state.markingScheme === 'percentage'){
+                    cutoff = (i - totalAccumulated) / (totalUnmarkedWeight / 100);
+                }else{
+                    cutoff = i - totalAccumulated;
+                }
+                report[index] = Math.round(cutoff * 100) / 100;
+                index++;
+            }
+        }
+
+        for (let i = 0; i < report.length; i++){
+            if (report[i] < 0){
+                report[i] = "✔";
+            }
+        }
+
+        return report;
+
     }
 
     errorCheck(){
@@ -159,15 +256,15 @@ class grader extends React.Component {
         for (let i = 0; i < components.length; i++){
           totalWeight = totalWeight + parseFloat(components[i].weight);
         }
-        if (totalWeight != 100){
+        if (totalWeight !== 100){
           errorMessage = "totalWeight";
         }
        
         for (let i = 0; i < components.length; i++){
  
-            if (components[i]. weight == "" || components[i].weight < 1 || components[i].weight > 100){
+            if (components[i].weight === "" || components[i].weight < 1 || components[i].weight > 100){
                 errorMessage = "weightError";
-            }else if (components[i]. mark == "" || components[i].mark < 0){
+            }else if (components[i].mark === "" || components[i].mark < 0){
                 errorMessage = "markError";
             }
         }
@@ -178,22 +275,27 @@ class grader extends React.Component {
 
     render() {
 
-      return (
+        return (
 
         <div className="graderDiv">
 
             <div id="UI" class="ui segment">
+
                 <div className="UITop">
                     {this.addResetButtons()}
                     {this.selectScheme()}
                 </div>
+
                 {this.createUI()}
+
             </div>
             
-            {this.output()}
-        
+            <div className="OutputSection" >
+                {this.output()}
+            </div>
+
         </div>
-      );
+    );
     }
 }
   

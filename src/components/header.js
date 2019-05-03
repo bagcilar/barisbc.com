@@ -9,7 +9,7 @@ class header extends Component {
 
   
   
-    if (window.location.pathname == "/"){
+    if (window.location.pathname === "/"){
       return (
         <div className="HeaderDiv">
           <div className="HeaderInnerDiv">
@@ -21,7 +21,7 @@ class header extends Component {
 
       );
 
-      }else if (window.location.pathname == "/info"){
+      }else if (window.location.pathname === "/info"){
         return (
           <div className="HeaderDiv">
             <div className="HeaderInnerDiv">
@@ -32,7 +32,7 @@ class header extends Component {
           </div>
         );
         
-      }else if (window.location.pathname == "/projects" || window.location.pathname == "/grader"){
+      }else if (window.location.pathname === "/projects" || window.location.pathname === "/grader"){
         return (
           <div className="HeaderDiv">
             <div className="HeaderInnerDiv">

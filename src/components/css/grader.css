@@ -48,11 +48,16 @@
   flex-direction: column;
 }
 
-#Output{
+.OutputSection{
   display: flex;
   flex-direction: column;
   min-width: 20vh;
-  min-height: 14vh;
+  min-height: 50px;
+  size: 100px;
+}
+
+#outputFields{
+  font-size: 125%;
 }
 
 .schemeSelectors{
@@ -62,6 +67,6 @@
 }
 
 #percentageRadio, #markRadio{
-  padding: 2%;
+  padding-left: 2%;
 }
 

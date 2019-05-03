@@ -9,8 +9,8 @@ class Footer extends Component {
 
           <div className="FooterDiv">
             <div className="FooterInnerDiv">
-              <a href="https://github.com/bagcilar" className="GitNav" target="_blank">GitHub</a>
-              <a href="https://ca.linkedin.com/in/baris-bagcilar-361b42108" className="LinkNav" target="_blank">Linkedin</a>
+              <a href="https://github.com/bagcilar" className="GitNav" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://ca.linkedin.com/in/baris-bagcilar-361b42108" className="LinkNav" target="_blank" rel="noopener noreferrer">Linkedin</a>
             </div>
           </div>
 

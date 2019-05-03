@@ -28,7 +28,7 @@ class home extends Component {
           <div className="WelcomeMessageDiv">
             <p id="timeGreeting" align="center">{greeter()}</p>
             <p id="welcomeMessage" align="center">welcome to barisbc.com</p>
-            <div class="ui divider" id="homePageUpperDivider"></div>
+            <div class="ui divider"></div>
           </div>
         </div>
 
