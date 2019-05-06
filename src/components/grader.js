@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, Button, Divider} from 'semantic-ui-react'
+import {Form, Button, Divider, Modal, Icon} from 'semantic-ui-react'
 import './css/grader.css';
 
 class grader extends React.Component {
@@ -7,7 +7,9 @@ class grader extends React.Component {
       super(props);
       this.state = {
           components: [{ name: "", weight: "", mark: "" }],
-          markingScheme: 'percentage'
+          markingScheme: 'percentage',
+          showReport: false,
+          showModal: false
       };
     }
     
@@ -51,7 +53,7 @@ class grader extends React.Component {
                             <input id="weightField" className = "weightField" type= "number" placeholder="weight" name="weight" value={el.weight ||''} onChange={this.handleChange.bind(this, i)} />
                         </div>
                         <div class="field">
-                            <input id="markField" type = "number" placeholder="mark" name="mark" value={el.mark ||''} onChange={this.handleChange.bind(this, i)} />
+                            <input id="markField" type = "number" placeholder={this.state.markingScheme} name="mark" value={el.mark ||''} onChange={this.handleChange.bind(this, i)} />
                         </div>
                     </div>
 
@@ -74,6 +76,7 @@ class grader extends React.Component {
     output(){
 
         var reportArray = this.report();
+        var  showing  = this.state.showReport;
 
         return(
 
@@ -93,20 +96,23 @@ class grader extends React.Component {
 
                 <div class="ui divider" id="homePageUpperDivider"></div>
 
-
-                <div>
-                    <p>%95: {reportArray[0]}</p>
-                    <p>%90: {reportArray[1]}</p>
-                    <p>%85: {reportArray[2]}</p>
-                    <p>%90: {reportArray[3]}</p>
-                    <p>%75: {reportArray[4]}</p>
-                    <p>%70: {reportArray[5]}</p>
-                    <p>%65: {reportArray[6]}</p>
-                    <p>%60: {reportArray[7]}</p>
-                    <p>%55: {reportArray[8]}</p>
-                    <p>%50: {reportArray[9]}</p>
-                </div>
-
+                <button  id="showReportButton" onClick={() => this.setState({ showReport: !showing })}>Show Report</button>
+                { showing 
+                    ?
+                    <div id="reportSection">
+                        <p>95%: {reportArray[0]}</p>
+                        <p>90%: {reportArray[1]}</p>
+                        <p>85%: {reportArray[2]}</p>
+                        <p>90%: {reportArray[3]}</p>
+                        <p>75%: {reportArray[4]}</p>
+                        <p>70%: {reportArray[5]}</p>
+                        <p>65%: {reportArray[6]}</p>
+                        <p>60%: {reportArray[7]}</p>
+                        <p>55%: {reportArray[8]}</p>
+                        <p>50%: {reportArray[9]}</p>
+                    </div>
+                    : null
+                }
 
             </div>  
         )
@@ -240,7 +246,7 @@ class grader extends React.Component {
 
         for (let i = 0; i < report.length; i++){
             if (report[i] < 0){
-                report[i] = "✔";
+                report[i] = <Icon name='checkmark'/>;
             }
         }
 
@@ -271,7 +277,39 @@ class grader extends React.Component {
 
         return errorMessage;
     }
-    
+
+    handleOpen = () => this.setState({ showModal: true })
+
+    handleClose = () => this.setState({ showModal: false })
+
+    modal(){
+
+        return (
+            <Modal            
+                trigger={<Button onClick={this.handleOpen}>Help</Button>}
+                open={this.state.showModal}
+                onClose={this.handleClose}
+                basic
+                size='small'
+            >
+              <Modal.Content>
+                <p>● Enter weights as percentages /100. The weights in total should equal 100</p>
+                <p>● When a weight and mark is added for a given component, you will be presented with continuous feedback</p>
+                <p>● When all weights and marks are added, the final mark will appear automatically</p>
+                <p>● If you press 'show report', you  will be presented with the performance necessary to obtain the specified grade points</p>
+                <p>● This function is available only when all weights have been entered and there are unmarked components</p>
+                <p>● The necessary performance is displayed as the average performance needed for the unmarked components</p>
+              </Modal.Content>
+
+              <Modal.Actions>
+                <Button color='green' onClick={this.handleClose} inverted><Icon name='checkmark'/>Got it</Button>
+              </Modal.Actions>
+
+            </Modal>
+
+          )
+          
+    }
 
     render() {
 
@@ -293,6 +331,8 @@ class grader extends React.Component {
             <div className="OutputSection" >
                 {this.output()}
             </div>
+
+            {this.modal()}
 
         </div>
     );
