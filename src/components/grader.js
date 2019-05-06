@@ -123,11 +123,11 @@ class grader extends React.Component {
 
             <div className="schemeSelectors">
                 <div id="percentageRadio">
-                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value="percentage" checked={this.state.markingScheme === 'percentage'}/>
+                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value=" percentage" checked={this.state.markingScheme === 'percentage'}/>
                     <label>Percentage</label>
                 </div>
                 <div id="markRadio">
-                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value="mark" checked={this.state.markingScheme === 'mark'}/>
+                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value=" mark" checked={this.state.markingScheme === 'mark'}/>
                     <label>Mark</label>
                 </div>
             </div>
