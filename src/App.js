@@ -12,7 +12,7 @@ import Projects from './components/projects.js';
 import Info from './components/info.js';
 import Grader from './components/grader.js';
 import Error from './components/error.js';
-
+import Test from './components/test.js';
 
 
 
@@ -24,9 +24,6 @@ class App extends Component {
 
         <div className="App">
 
-          <div>
-            <Header />
-          </div>
 
           <div className="content">
             <Switch>
@@ -38,9 +35,6 @@ class App extends Component {
             </Switch>
           </div>
 
-          <div>
-           <Footer />
-          </div>
 
         </div>
 

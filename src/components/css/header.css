@@ -1,19 +1,27 @@
 .HeaderDiv{
     background-color: rgb(36, 39, 49);
-    padding-top: 2%;
-    height: 15vh;
+    height: 6vh;
     width: 100%;
+    font-family: "Montserrat";
 }
 
 .HeaderInnerDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    justify-items: center;
+    align-items: center;
     margin: 0 auto;
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
+    height: 100%;
 }
 
 .InfoNav, .ProjectsNav, .HomeNav{
+    padding-top: 1vh;
     padding: 2%;
-    font-size: 150%;
+    font-size: 130%;
     color:white;
+
 }
