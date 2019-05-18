@@ -12,12 +12,11 @@
     font-family: "Montserrat";
 }
 
-.headerSection{
-    top: 0;
-    position: sticky;
-}
-
 .WelcomeMessageDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     top: 45vh;
     bottom: 50vh;
@@ -27,9 +26,70 @@
     box-sizing: border-box;
 }
 
-.projectsSection{
-    background-color:  gray;
+#startButton, #homeSectionButton, #greetingSectionButton, #projectsSectionButton, #aboutMeSectionButton, #contactSectionButton{
+    background:none!important;
+    border:none; 
+    font-family: "Montserrat";
+    cursor: pointer;
+    padding-top: 1vh;
+    padding: 2%;
+    font-size: 130%;
+    outline: none;    
+    transition: 0.4s ease-in-out;
+    color: grey;
+}
 
+#homeSectionButton{
+    margin-left: 20%;
+}
+
+#homeSectionButton:hover{
+    color:brown;
+}
+
+#greetingSectionButton:hover{
+    color:brown;
+}
+
+#projectsSectionButton:hover{
+    color:brown;
+}
+
+#aboutMeSectionButton:hover{
+    color:brown;
+}
+
+#contactSectionButton:hover{
+    color:brown;
+}
+
+#startButton:hover{
+    color:brown;
+    transform: scale(1.4);
+}
+
+.headerSection{
+    background-color: rgb(36, 39, 49);
+    height: 6vh;
+    width: 100%;
+    font-family: "Montserrat";
+    top: 0;
+    position:sticky;
+    display: flex;
+    flex-direction: row;
+}
+
+.headerDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 auto;
+    width: 40%;
+    height: 100%;
+}
+
+#projectsSection{
+    background-color:  gray;
 }
 
 #timeGreeting{
@@ -41,39 +101,5 @@
 
 #welcomeMessagePart2{
     color:brown;
-}
-
-#homeSectionButton, #greetingSectionButton, #projectsSectionButton, #aboutMeSectionButton, #contactSectionButton{
-    background:none!important;
-    border:none; 
-    font: inherit;
-    cursor: pointer;
-    transition: 0.4s ease-in-out;
-    padding-top: 1vh;
-    padding: 1%;
-    font-size: 130%;
-    outline: none;
-
-}
-
-.HeaderSection{
-    background-color:  rgb(36, 39, 49);
-    height: 10vh;
-    width: 100%;
-    font-family: "Montserrat";
-    
-}
-
-.HeaderDiv{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    justify-items: center;
-    align-items: center;
-    margin: 0 auto;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
-    height: 100%;
 }
 

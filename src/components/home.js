@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import './css/Home.css';
 import Particles from 'react-particles-js';
-import Header from './header.js';
+import {Button, Icon} from 'semantic-ui-react'
 
+import Footer from './footer.js';
+import Home from './home.js';
+import Projects from './projects.js';
+import Info from './info.js';
+import Grader from './grader.js';
+import Error from './error.js';
+import Test from './test.js';
 
 function greeter(){
   var greetMessage="";
@@ -69,6 +76,7 @@ class home extends Component {
 
   constructor(props) {
     super(props)
+    this.greetingRef = React.createRef()
     this.homeRef = React.createRef()
     this.projectsRef = React.createRef()
     this.aboutMeRef = React.createRef()
@@ -77,35 +85,40 @@ class home extends Component {
 
 
   scroll(ref) {
-    ref.current.scrollIntoView({behavior: 'smooth'})
-    
+
+    var element;
+
+
     if (ref === this.homeRef){
       this.refs.homeSectionButton.style.color = "brown";
-      this.refs.projectsSectionButton.style.color = "black";
-      this.refs.aboutMeSectionButton.style.color = "black";
-      this.refs.contactSectionButton.style.color = "black";
+      this.refs.projectsSectionButton.style.color = "grey";
+      this.refs.aboutMeSectionButton.style.color = "grey";
+      this.refs.contactSectionButton.style.color = "grey";
     } 
     else if (ref === this.projectsRef){
-      this.refs.homeSectionButton.style.color = "black";
+      this.refs.homeSectionButton.style.color = "grey";
       this.refs.projectsSectionButton.style.color = "brown";
-      this.refs.aboutMeSectionButton.style.color = "black";
-      this.refs.contactSectionButton.style.color = "black";
+      this.refs.aboutMeSectionButton.style.color = "grey";
+      this.refs.contactSectionButton.style.color = "grey";
     }else if (ref === this.aboutMeRef){
-      this.refs.homeSectionButton.style.color = "black";
-      this.refs.projectsSectionButton.style.color = "black";
+      this.refs.homeSectionButton.style.color = "grey";
+      this.refs.projectsSectionButton.style.color = "grey";
       this.refs.aboutMeSectionButton.style.color = "brown";
-      this.refs.contactSectionButton.style.color = "black";
+      this.refs.contactSectionButton.style.color = "grey";
     }else if (ref === this.contactRef){
-      this.refs.homeSectionButton.style.color = "black";
-      this.refs.projectsSectionButton.style.color = "black";
-      this.refs.aboutMeSectionButton.style.color = "black";
+      this.refs.homeSectionButton.style.color = "grey";
+      this.refs.projectsSectionButton.style.color = "grey";
+      this.refs.aboutMeSectionButton.style.color = "grey";
       this.refs.contactSectionButton.style.color = "brown";
-    }   
+    } else if (ref === this.greetingRef){
+      element = document.getElementById('greetingSection');
+    }
+
+    ref.current.scrollIntoView({behavior: 'smooth'})
+
   }
 
 
-
-   
   render() {
 
     return (
@@ -117,12 +130,17 @@ class home extends Component {
           <Particles className='particles' params={particlesOptions} />
             <div className="WelcomeMessageDiv">
               <p id="timeGreeting" align="center">{greeter()}</p>
-              <p id="welcomeMessage" align="center"> welcome to <span id="welcomeMessagePart2">barisbc.com</span></p>
+              <p id="welcomeMessage" align="center"> welcome to <span align="center"id="welcomeMessagePart2">barisbc.com</span></p>
+
+              <button id = "startButton" onClick={() => {this.scroll(this.greetingRef)}}>
+                <i class="angle double down icon"></i>  
+              </button>
             </div>
             
         </section>
 
 
+                
         <section className = "headerSection">
           <div className = "headerDiv">
             <button id = "homeSectionButton" ref="homeSectionButton" onClick={() => {this.scroll(this.homeRef)}}> barisbc </button>
@@ -133,13 +151,13 @@ class home extends Component {
         </section>
 
 
-        <section className = "greetingSection">
+        <section ref={this.greetingRef} className = "greetingSection">
           <p>This is the greeting section!</p>
         </section>
 
 
         <section ref={this.projectsRef} className = "projectsSection">
-          <p>This is the projects section!</p>
+          <Projects />
         </section>
 
 
