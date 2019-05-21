@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom"
- 
+
 
 import './components/css/App.css';
 
 
-import Header from './components/header.js';
 import Footer from './components/footer.js';
-import Home from './components/home.js';
-import Projects from './components/projects.js';
-import Info from './components/info.js';
+import MainPage from './components/mainPage.js';
 import Grader from './components/grader.js';
 import Error from './components/error.js';
 import Test from './components/test.js';
-
+import Resume from './components/resume.js';
 
 
 class App extends Component {
@@ -26,25 +23,23 @@ class App extends Component {
 
 
           <div className="content">
+
+        
             <Switch>
-              <Route path="/" component={Home} exact/> 
-              <Route path="/projects" component={Projects} /> 
+              <Route path="/" component={MainPage} exact/> 
+              <Route path="/resume" component={Resume} /> 
               <Route path="/grader" component={Grader} /> 
-              <Route path="/info" component={Info} />
               <Route component={Error} /> 
             </Switch>
+
+            <Footer />
+
           </div>
 
 
         </div>
 
-        
       </BrowserRouter>
-
-
-  
-
-
 
 
 );

@@ -1,0 +1,109 @@
+.MainPage{
+    background-color: white;
+}
+
+.homeSection, .particles, .projectsSection, .aboutMeSection{
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.projectsSection, .aboutMeSection{
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.homeSection{
+    background-color:  rgb(36, 39, 49);
+    font-family: "Montserrat";
+}
+
+.contactSection{
+    background-color:  rgb(36, 39, 49);
+    height: 45vh;
+}
+
+
+.WelcomeMessageDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45vh;
+    bottom: 50vh;
+    left: 30vh;
+    right: 30vh;
+    color: white;
+    box-sizing: border-box;
+}
+
+.footerUpperSection{
+    height: 6vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    background-color:  rgb(36, 39, 49);
+}
+
+#timeGreeting{
+    font-size: 350%;
+}
+#welcomeMessage{
+    font-size: 200%;
+}
+
+#welcomeMessagePart2{
+    color:brown;
+}
+
+#startButton, #footerStartButton, #homeSectionButton, #projectsSectionButton, #aboutMeSectionButton, #contactSectionButton, #resumeButton{
+    background:none!important;
+    border:none; 
+    font-family: "Montserrat";
+    cursor: pointer;
+    padding-top: 1vh;
+    padding: 2%;
+    font-size: 130%;
+    outline: none;    
+    transition: 0.4s ease-in-out;
+    color: grey;
+    white-space: nowrap;
+}
+
+#projectsSectionButton{
+    margin-left: 1%;
+}
+
+#startButton:hover, #footerStartButton:hover, #homeSectionButton:hover, #projectsSectionButton:hover, #aboutMeSectionButton:hover, #contactSectionButton:hover, #resumeButton:hover{
+    color:brown;
+}
+
+#startButton:hover, #footerStartButton:hover{
+    transform: scale(1.4);
+}
+
+.headerSection{
+    background-color: rgb(36, 39, 49);
+    height: 6vh;
+    width: 100%;
+    font-family: "Montserrat";
+    top: 0;
+    position:sticky;
+    display: flex;
+    flex-direction: row;
+}
+
+.headerDiv{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+    height: 100%;
+}

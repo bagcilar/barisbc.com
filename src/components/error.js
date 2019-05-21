@@ -5,8 +5,6 @@ class error extends Component {
   render() {
     return (
 
-
-
       <div>
         <p>oops! page not found...</p>
       </div>
