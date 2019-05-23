@@ -23,34 +23,36 @@ class mainPage extends Component {
 
   scroll(ref) {
 
-    var element;
-
     if (ref === this.homeRef){
       this.refs.homeSectionButton.style.color = "brown";
       this.refs.projectsSectionButton.style.color = "grey";
       this.refs.aboutMeSectionButton.style.color = "grey";
       this.refs.contactSectionButton.style.color = "grey";
     } 
-    else if (ref === this.projectsRef){
-      this.refs.homeSectionButton.style.color = "grey";
-      this.refs.projectsSectionButton.style.color = "brown";
-      this.refs.aboutMeSectionButton.style.color = "grey";
-      this.refs.contactSectionButton.style.color = "grey";
-    }else if (ref === this.aboutMeRef){
+    else if (ref === this.aboutMeRef){
       this.refs.homeSectionButton.style.color = "grey";
       this.refs.projectsSectionButton.style.color = "grey";
       this.refs.aboutMeSectionButton.style.color = "brown";
+      this.refs.contactSectionButton.style.color = "grey";
+    }else if (ref === this.projectsRef){
+      this.refs.homeSectionButton.style.color = "grey";
+      this.refs.projectsSectionButton.style.color = "brown";
+      this.refs.aboutMeSectionButton.style.color = "grey";
       this.refs.contactSectionButton.style.color = "grey";
     }else if (ref === this.contactRef){
       this.refs.homeSectionButton.style.color = "grey";
       this.refs.projectsSectionButton.style.color = "grey";
       this.refs.aboutMeSectionButton.style.color = "grey";
       this.refs.contactSectionButton.style.color = "brown";
-    } else if (ref === this.greetingRef){
-      element = document.getElementById('greetingSection');
     }
 
+    // window.scrollTo({
+    //   top: position,
+    //   behavior: 'smooth'
+    // });
+
     ref.current.scrollIntoView({behavior: 'smooth'})
+
 
   }
 
@@ -85,7 +87,7 @@ class mainPage extends Component {
             <button id = "homeSectionButton" ref="homeSectionButton" onClick={() => {this.scroll(this.homeRef)}}> barisbc </button>
             <button id = "aboutMeSectionButton" ref="aboutMeSectionButton" onClick={() => {this.scroll(this.aboutMeRef)}}> about me </button>
             <button id = "projectsSectionButton" ref="projectsSectionButton" onClick={() => {this.scroll(this.projectsRef)}}> projects </button>
-            <button id = "contactSectionButton" ref="contactSectionButton" onClick={() => {this.scroll(this.contactRef)}}> contact </button>           
+            <button id = "contactSectionButton" ref="contactSectionButton" onClick={() => {this.scroll(this.contactRef)}}> contact </button>
             <NavLink to="/resume" target="_blank" id="resumeButton">resume</NavLink>
           </div>
         </section>
@@ -93,7 +95,6 @@ class mainPage extends Component {
 
         <section ref={this.aboutMeRef} className = "aboutMeSection">
           <AboutMe />
-          <div class="ui divider" ></div>
         </section>
 
 
@@ -103,13 +104,6 @@ class mainPage extends Component {
 
 
         <section ref={this.contactRef} className = "contactSection">
-          <Contact />
-        </section>
-
-        <section className = "footerUpperSection">
-          <button id = "footerStartButton" onClick={() => {this.scroll(this.homeRef)}}>
-              <i id = "footerStartIcon" class="angle double up icon"></i>  
-          </button>
         </section>
 
       </div>

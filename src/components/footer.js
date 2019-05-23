@@ -5,11 +5,27 @@ import linkedinIcon from '../res/linkedin.png'
 import instaIcon from '../res/instagram.png'
 
 class Footer extends Component {
+
+
+  scroll() {
+
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+  }
+
+
+
   render() {
     return (
 
 
           <div className="FooterDiv">
+            <button id = "footerStartButton" onClick={() => {this.scroll()}}>
+              <i id = "doubleUpIcon" class="angle double up icon"></i>  
+            </button>
             <div className="FooterInnerDiv">
               <a href="https://github.com/bagcilar" id="gitNav" target="_blank" rel="noopener noreferrer"><img src={githubIcon} id="gitIcon" ></img></a>
               <a href="https://www.instagram.com/barisbc22/" id="instaNav" target="_blank" rel="noopener noreferrer"><img src={instaIcon} id="instaIcon"></img></a>

@@ -5,7 +5,15 @@ import profilePicture from '../res/profilePic.png'
 
 class AboutMe extends Component {
 
-  
+  scroll() {
+
+    window.scroll({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    });
+
+  }
+
   render() {
 
     return (
@@ -21,8 +29,10 @@ class AboutMe extends Component {
             </div>
             <div className = "aboutMePart2">
             <p align="center">I am currently looking for a co-op position for Fall 19. On this website, you can see some minor projects I'm working on</p>
-            <p align="center">Go <span> <button id = "contactTextButton">here</button> </span> if you'd like to contact me!</p>
+            <p align="center">Go <span> <button id = "contactTextButton" onClick={() => {this.scroll()}} >here</button> </span> if you'd like to contact me!</p>
             </div>
+            <div class="ui divider" ></div>
+
         </div>
 
       </div>
