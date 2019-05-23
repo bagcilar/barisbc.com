@@ -60,7 +60,7 @@
     color:brown;
 }
 
-#startButton, #homeSectionButton, #projectsSectionButton, #aboutMeSectionButton, #contactSectionButton, #resumeButton{
+#startButton, #homeSectionButton, #projectsSectionButton, #aboutMeSectionButton, #contactSectionButton, #resumeNav{
     background:none!important;
     border:none; 
     font-family: "Montserrat";
@@ -78,7 +78,7 @@
     margin-left: 1%;
 }
 
-#startButton:hover, #homeSectionButton:hover, #projectsSectionButton:hover, #aboutMeSectionButton:hover, #contactSectionButton:hover, #resumeButton:hover{
+#startButton:hover, #homeSectionButton:hover, #projectsSectionButton:hover, #aboutMeSectionButton:hover, #contactSectionButton:hover, #resumeNav:hover{
     color:brown;
 }
 

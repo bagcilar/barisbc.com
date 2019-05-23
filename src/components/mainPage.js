@@ -87,7 +87,7 @@ class mainPage extends Component {
             <button id = "aboutMeSectionButton" ref="aboutMeSectionButton" onClick={() => {this.scroll(this.aboutMeRef)}}> about me </button>
             <button id = "projectsSectionButton" ref="projectsSectionButton" onClick={() => {this.scroll(this.projectsRef)}}> projects </button>
             <button id = "contactSectionButton" ref="contactSectionButton" onClick={() => {this.scroll(this.contactRef)}}> contact </button>
-            <NavLink to="/resume" id="resumeButton">resume</NavLink>
+            <NavLink to="/resume" id="resumeNav">resume</NavLink>
           </div>
         </section>
 
