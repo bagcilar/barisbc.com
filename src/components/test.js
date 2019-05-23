@@ -8,7 +8,7 @@ import graderPicture from '../res/grader.png'
 
 import {NavLink} from "react-router-dom"
 
-var graderDescription = "Enter your marks for components of a course, receive continuous feedback, dynamically calculate your final grade!";
+var graderDescription = "Enter your marks for components of a course, receive continuous feedback, and dynamically calculate your final grade";
 
   
   class testapp extends Component {
@@ -20,11 +20,18 @@ var graderDescription = "Enter your marks for components of a course, receive co
   render() {
     return (
 
-        <div>
-        </div>
+
+            <div></div>
+
+
+
+   
+
 
     );
   }
 }
 
 export default testapp;
+
+

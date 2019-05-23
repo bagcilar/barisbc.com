@@ -2,42 +2,67 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     padding: 5vh;
 }
 
-  .graderProjectDiv {
-    width: 35vh;
-    position: relative;
-    background-color: black;
+.navSection{
+    width:35vh;
+    height:auto;
+    position:relative;
+    transition:.3s;
+    margin:4px;
+  }
+  
+  .graderImage, .domainFinderImage, .sleepClockImage{
+    width:35vh;
+    height:auto;
+    transition:.5s;
+    border-radius:4px;
+  }
+  
+  #graderNav:hover .graderImage{
+    filter:blur(2px) brightness(60%);
   }
 
-  .graderProjectDiv:hover img {
-    opacity: 0.3;
+  #domainFinderNav:hover .domainFinderImage{
+    filter:blur(2px) brightness(60%);
   }
 
-  .graderProjectDiv:hover .graderExplanation{
-    opacity: 1; 
+  #sleepClockNav:hover .sleepClockImage{
+    filter:blur(2px) brightness(60%);
+  }
+  
+  .textSection{
+    font-family: "Montserrat";
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    z-index:1;
+    top:15%;
+    left:7.5%;
+    right:7.5%;
+    width:85%;
+    text-align:center;
+    color:#fff;
+    opacity:0;
+    transition:.3s;
+  }
+  
+  .navSection h3{
+    top:50%
+  }
+  
+  .navSection:hover :not(img){
+    opacity:1;
   }
 
-  .graderImage{
-    width: 100%;
-    height: auto;
-    opacity: 1;
-    padding-top: 0;
+  .projectsheader{
+    font-family: "Montserrat";
+    font-size: 250%;
+    margin-bottom: 2%;
   }
 
-  .graderImage,
-  .graderExplanation{
-    -webkit-transition: opacity 0.5s ease-out;
-    -moz-transition: opacity 0.5s ease-out;
-    -o-transition: opacity 0.5s ease-out;
-    transition: opacity 0.5s ease-out;
-  }
-
-  .graderExplanation{
-    font-size: 2vh;
-    position: absolute;
-    color: white;
-    text-align: center;
-    opacity: 0;
+  .projectList{
+      padding-top: 5%;
   }

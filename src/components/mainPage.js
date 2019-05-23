@@ -92,10 +92,10 @@ class mainPage extends Component {
         </section>
 
 
+
         <section ref={this.aboutMeRef} className = "aboutMeSection">
           <AboutMe />
         </section>
-
 
         <section ref={this.projectsRef} className = "projectsSection">
           <Projects />
