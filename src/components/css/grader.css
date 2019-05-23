@@ -39,9 +39,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  padding-bottom: 41vh;
 }
-
 
 .OutputSection{
   display: flex;
@@ -78,11 +76,15 @@
 }
 
 button:hover {
-color:red;
+  color:red;
 }
 
 .progressBar{
   width: 60%;
   margin-left: 20%;
   margin-right: 20%
+}
+
+.graderDiv{
+  height: 80vh;
 }
