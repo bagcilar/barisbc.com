@@ -26,13 +26,17 @@ class App extends Component {
 
         
             <Switch>
-              <Route path="/" component={MainPage} exact/> 
-              <Route path="/resume" component={Resume} /> 
-              <Route path="/grader" component={Grader} /> 
+              <Route path="/" component={Test} exact/> 
+              <Route path="/resume" component={Resume} exact/> 
+              <Route path="/grader" component={Grader} exact/> 
               <Route component={Error} /> 
             </Switch>
 
-            <Footer />
+
+            <div className="footer">
+              <Footer / >
+            </div>
+
 
           </div>
 

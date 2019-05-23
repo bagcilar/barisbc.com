@@ -33,20 +33,14 @@
   margin-left: 5%;
 }
 
-.graderDiv{
+.bottomSection{
+  padding: 15vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  margin-bottom: 15%;
-  padding-top: 3%;
 }
 
-
-#UI{
-  display: flex;
-  flex-direction: column;
-}
 
 .OutputSection{
   display: flex;
@@ -84,4 +78,10 @@
 
 button:hover {
 color:red;
+}
+
+.progressBar{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%
 }

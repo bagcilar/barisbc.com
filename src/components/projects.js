@@ -16,19 +16,18 @@ class Projects extends Component {
         <div className="ProjectsDiv">
 
 
+        <div className = "graderProjectDiv">
 
-            
-        <div class="ui slow move reveal" className ="graderSection">
-
-          <div class="ui visible content">
-              <img src={graderPicture} className = "graderPicture"/>
-          </div>
-
-          <div class="ui hidden content" className = "explanationReveal">
-              <NavLink to="/grader" className="graderNav">Try it!</NavLink>
+          <img src= {graderPicture} className="graderImage"/>
+          <div class="graderExplanation">
+              {graderDescription}
+              <p>
+              <NavLink to="/grader" id="graderNav">Try it!</NavLink>
+              </p>
           </div>
 
         </div>
+
 
 
 

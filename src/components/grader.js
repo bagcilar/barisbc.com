@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, Button, Divider, Modal, Icon} from 'semantic-ui-react'
+import {Form, Button, Divider, Modal, Icon, Progress} from 'semantic-ui-react'
 import './css/grader.css';
 
 class grader extends React.Component {
@@ -311,28 +311,59 @@ class grader extends React.Component {
           
     }
 
+    showProgress(){
+
+
+        var progress = this.accumulatedFeedback().toString() + "%";
+    
+        return(
+            <div className = "testApp">
+    
+            <div class="ui active indicating progress" data-percent={progress}>
+            <div id="bar" style={{width:progress}}class="bar"><div class="progress">{progress}</div></div>
+            </div>
+         
+        </div>
+        )
+    }
+    
+
+
     render() {
 
         return (
 
         <div className="graderDiv">
 
-            <div id="UI" class="ui segment">
 
-                <div className="UITop">
-                    {this.addResetButtons()}
-                    {this.selectScheme()}
+            <div className = "progressBar">
+                {this.showProgress()}
+            </div>
+
+
+            <div className = "bottomSection">
+
+                <div id="UI" class="ui segment">
+
+                    <div className="UITop">
+                        {this.addResetButtons()}
+                        {this.selectScheme()}
+                    </div>
+
+                    {this.createUI()}
+
+                </div>
+                
+                <div className="OutputSection">
+                    {this.output()}
                 </div>
 
-                {this.createUI()}
+                {this.modal()}
+
 
             </div>
-            
-            <div className="OutputSection" >
-                {this.output()}
-            </div>
 
-            {this.modal()}
+
 
         </div>
     );

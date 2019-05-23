@@ -1,5 +1,10 @@
 .MainPage{
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
 }
 
 .homeSection, .particles, .projectsSection, .aboutMeSection, .projectsSection{
@@ -7,10 +12,13 @@
     box-sizing: border-box;
 }
 
+.homeSection, .contactSection{
+    width: 100%;
+}
+
 .projectsSection, .aboutMeSection{
     width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    min-width: 50vh;
 }
 
 .projectsSection{

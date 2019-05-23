@@ -83,7 +83,7 @@ class mainPage extends Component {
 
         <section className = "headerSection">
           <div className = "headerDiv">
-            <button id = "homeSectionButton" ref="homeSectionButton" onClick={() => {this.scroll(this.homeRef)}}> barisbc </button>
+            <button id = "homeSectionButton" ref="homeSectionButton" onClick={() => {this.scroll(this.homeRef)}}> home </button>
             <button id = "aboutMeSectionButton" ref="aboutMeSectionButton" onClick={() => {this.scroll(this.aboutMeRef)}}> about me </button>
             <button id = "projectsSectionButton" ref="projectsSectionButton" onClick={() => {this.scroll(this.projectsRef)}}> projects </button>
             <button id = "contactSectionButton" ref="contactSectionButton" onClick={() => {this.scroll(this.contactRef)}}> contact </button>
@@ -103,6 +103,7 @@ class mainPage extends Component {
 
 
         <section ref={this.contactRef} className = "contactSection">
+        
         </section>
 
       </div>

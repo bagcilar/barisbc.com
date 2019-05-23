@@ -13,9 +13,10 @@ class Resume extends Component {
 
     return (
 
-<iframe src={resumeFile}
-        width="100%" height="1000" frameborder="0" allowfullscreen sandbox>
-</iframe>    );
+      <iframe src={resumeFile}
+              width="100%" height="1000" frameborder="0" allowfullscreen sandbox>
+      </iframe>
+    );
   }
 }
 
