@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom"
 import './css/projects.css';
+import graderPicture from '../res/grader.png'
 
-var graderDescription = "This is a simple application that allows users to enter their marks on components of a course. The application provides continuous feedback, calculates final grade, and lets users adjust their marks dynamically in order to determine the grades needed for a given final mark.";
+
+var graderDescription = "Enter your marks for components of a course, receive continuous feedback, dynamically calculate your final grade!";
 
 
 class Projects extends Component {
@@ -13,16 +15,22 @@ class Projects extends Component {
     return (
         <div className="ProjectsDiv">
 
-          <div clasName="ProjectList">
 
-            <div style={{marginTop: "200px"}}className="graderSection">
-              <NavLink to="/grader" className="graderNav">Grader</NavLink>
-              <p style={{marginTop: "20px"}}>{graderDescription}</p>
-            </div>
 
-          <div class="ui divider"></div>
+            
+        <div class="ui slow move reveal" className ="graderSection">
 
+          <div class="ui visible content">
+              <img src={graderPicture} className = "graderPicture"/>
           </div>
+
+          <div class="ui hidden content" className = "explanationReveal">
+              <NavLink to="/grader" className="graderNav">Try it!</NavLink>
+          </div>
+
+        </div>
+
+
 
         </div>
     );

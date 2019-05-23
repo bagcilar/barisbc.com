@@ -1,21 +1,15 @@
 .ProjectsDiv{
-    position: absolute;
-    width: 60%;
-}
-
-.ProjectsList{
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 0;
-    padding: 5%;
+    padding: 5vh;
 }
 
-.graderSection{
-    font-size: 100%;
+.graderPicture, .explanationReveal{
+    position: relative;
+    display: block;
+    width: 38%;
+    min-width: 30vh;
+    height: auto;
 }
 
-.graderNav{
-    font-size: 150%;
-    color:rgb(36, 39, 49);
-}

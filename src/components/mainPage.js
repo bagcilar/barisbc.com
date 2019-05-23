@@ -23,7 +23,11 @@ class mainPage extends Component {
 
   scroll(ref) {
 
+    var position = window.innerHeight;
+
+
     if (ref === this.homeRef){
+      position = 0;
       this.refs.homeSectionButton.style.color = "brown";
       this.refs.projectsSectionButton.style.color = "grey";
       this.refs.aboutMeSectionButton.style.color = "grey";
@@ -35,36 +39,31 @@ class mainPage extends Component {
       this.refs.aboutMeSectionButton.style.color = "brown";
       this.refs.contactSectionButton.style.color = "grey";
     }else if (ref === this.projectsRef){
+      position *= 2;
       this.refs.homeSectionButton.style.color = "grey";
       this.refs.projectsSectionButton.style.color = "brown";
       this.refs.aboutMeSectionButton.style.color = "grey";
       this.refs.contactSectionButton.style.color = "grey";
     }else if (ref === this.contactRef){
+      position = document.body.scrollHeight;
       this.refs.homeSectionButton.style.color = "grey";
       this.refs.projectsSectionButton.style.color = "grey";
       this.refs.aboutMeSectionButton.style.color = "grey";
       this.refs.contactSectionButton.style.color = "brown";
     }
 
-    // window.scrollTo({
-    //   top: position,
-    //   behavior: 'smooth'
-    // });
-
-    ref.current.scrollIntoView({behavior: 'smooth'})
-
+    window.scrollTo({
+      top: position,
+      behavior: 'smooth'
+    });
 
   }
-
-
 
   render() {
 
     return (
 
       <div className = "MainPage">
-
-
 
         <section ref={this.homeRef} className = "homeSection">
 
