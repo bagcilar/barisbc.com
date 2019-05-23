@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {NavLink} from "react-router-dom"
 import './css/footer.css';
 import githubIcon from '../res/github.png'
 import linkedinIcon from '../res/linkedin.png'
@@ -16,16 +17,30 @@ class Footer extends Component {
 
   }
 
+  navigation(){
 
+    if (window.location.pathname == "/"){
+    
+      return (
+        <button id = "footerStartButton" onClick={() => {this.scroll()}}>
+          <i id = "doubleUpIcon" class="angle double up icon"></i>  
+        </button>
+      )
+    }else{
+      return (
+        <NavLink to="/" id="homeNav">home</NavLink>
+      )
+
+    }
+
+  }
 
   render() {
     return (
 
 
           <div className="FooterDiv">
-            <button id = "footerStartButton" onClick={() => {this.scroll()}}>
-              <i id = "doubleUpIcon" class="angle double up icon"></i>  
-            </button>
+            {this.navigation()}
             <div className="FooterInnerDiv">
               <a href="https://github.com/bagcilar" id="gitNav" target="_blank" rel="noopener noreferrer"><img src={githubIcon} id="gitIcon" ></img></a>
               <a href="https://www.instagram.com/barisbc22/" id="instaNav" target="_blank" rel="noopener noreferrer"><img src={instaIcon} id="instaIcon"></img></a>
