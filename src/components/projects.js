@@ -24,7 +24,7 @@ class Projects extends Component {
         <div className="ProjectsDiv">
 
             <div>
-              <p className = "projectsheader">Projects</p>
+              <p className = "projectsHeader">projects</p>
               <div class="ui divider" ></div>
             </div>
 
