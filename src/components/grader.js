@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Form, Button, Divider, Modal, Icon, Progress} from 'semantic-ui-react'
+import {Form, Button, Divider, Modal, Icon, Progress, Checkbox} from 'semantic-ui-react'
 import './css/grader.css';
 
 class grader extends React.Component {
@@ -34,10 +34,7 @@ class grader extends React.Component {
         this.setState({ components });
    }
 
-    setScheme (e){
-        this.setState({ markingScheme: e.target.value});
-    }
-    
+
     createUI(){
         return this.state.components.map((el, i) => (
             <div class="ui form" key={i}>
@@ -76,7 +73,7 @@ class grader extends React.Component {
     output(){
 
         var reportArray = this.report();
-        var  showing  = this.state.showReport;
+        var showing  = this.state.showReport;
         var buttonCaption;
         if (showing){
             buttonCaption = "Hide Report"
@@ -127,20 +124,29 @@ class grader extends React.Component {
         )
     }
 
-    selectScheme(){
-        return (
+    changeScheme (e){
+         this.setState({ markingScheme: e.target.value});
+    }
 
-            <div className="schemeSelectors">
-                <div id="percentageRadio">
-                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value=" percentage" checked={this.state.markingScheme === 'percentage'}/>
-                    <label>Percentage</label>
-                </div>
-                <div id="markRadio">
-                    <input onChange={this.setScheme.bind(this)} type="radio" name="schemeRadioButton" value=" mark" checked={this.state.markingScheme === 'mark'}/>
-                    <label>Mark</label>
-                </div>
+    selectScheme(){
+
+        var perButtonStyle, markButtonStyle;
+
+        if (this.state.markingScheme === "percentage"){
+            perButtonStyle = "ui positive button active"
+            markButtonStyle = "ui button"
+        }else{
+            markButtonStyle = "ui positive button active"
+            perButtonStyle = "ui button"
+        }
+
+        return (
+            <div id="schemeToggleDiv" class="ui buttons">
+                <button id= "percToggleButton" class= {perButtonStyle} onClick={this.changeScheme.bind(this)} value="percentage">%</button>
+                <div class="or"></div>
+                <button id= "markToggleButton" class= {markButtonStyle} onClick={this.changeScheme.bind(this)} value="mark">mark</button>
             </div>
-           )
+        )
     }
 
     reset(){
@@ -293,7 +299,7 @@ class grader extends React.Component {
 
     modal(){
 
-        var button = <button id="modalTrigger" class="ui inverted primary button" onClick={this.handleOpen}>help</button>
+        var button = <button id="modalTrigger" class="ui inverted blue button" onClick={this.handleOpen}>help</button>
 
         return (
             <Modal            
@@ -329,7 +335,7 @@ class grader extends React.Component {
         return(
             
             <div id="bar" class="ui active indicating progress" data-percent={progress}>
-                <div style={{width:progress}}class="bar">
+                <div style={{width:progress, maxWidth: "100%"}}class="bar">
                     <div class="progress">{progress}</div>
                 </div>
             </div>
@@ -349,15 +355,19 @@ class grader extends React.Component {
 
 
                 <div id="UI" class="ui segment">
-                
-                    {this.modal()}
 
                     <div className="UITop">
-                        {this.addResetButtons()}
+                        {this.modal()}
                         {this.selectScheme()}
                     </div>
+                
+                    <div className="UIMiddle">
+                        {this.addResetButtons()}
+                    </div>
 
-                    {this.createUI()}
+                    <div className="UIBottom">
+                        {this.createUI()}
+                    </div>
 
                 </div>
 

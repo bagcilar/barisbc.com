@@ -2,9 +2,30 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.UIMiddle{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin-top: 5%;
   margin-bottom: 5%;
 }
+
+
+#modalTrigger{
+  font-size: 75%;
+  height: 75%;
+}
+
+#percToggleButton, #markToggleButton{
+  height: 75%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 
 .UIComponents{
   display: flex;
@@ -63,10 +84,6 @@
   justify-content: flex-end;
 }
 
-#percentageRadio, #markRadio{
-  padding-left: 2%;
-}
-
 #showReportButton{
   background:none!important;
   border:none; 
@@ -78,9 +95,7 @@
   padding-bottom: 2%;
 }
 
-#modalTrigger{
-  font-size: 75%;
-}
+
 
 button:hover {
   color:red;
