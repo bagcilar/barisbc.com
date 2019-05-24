@@ -20,12 +20,12 @@
   width: 150%;
 }
 
-#markField, #weightField{
-  width: 100%;
-}
-
 #markField{
   margin-left: 5%;
+}
+
+#markField, #weightField{
+  width: 100%;
 }
 
 #removeButton{
@@ -33,22 +33,28 @@
   margin-left: 5%;
 }
 
-.bottomSection{
-  padding: 15vh;
+.UISection{
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.container{
+  min-width: 35vh;
 }
 
 .OutputSection{
   display: flex;
   flex-direction: column;
-  min-width: 20vh;
+  padding-right: 10vh;
+  width: 45vh;
+  min-width: 30vh;
 }
 
 #outputFields{
   font-size: 115%;
+  margin-top: 0;
+  padding-left: 5%;
 }
 
 .schemeSelectors{
@@ -68,11 +74,12 @@
   cursor: pointer;
   transition: 0.4s ease-in-out;
   outline: none;
+  padding-left: 0;
+  padding-bottom: 2%;
 }
 
-#reportSection{
-  padding-top: 5%;
-  padding-left: 4%
+#modalTrigger{
+  font-size: 75%;
 }
 
 button:hover {
@@ -83,13 +90,21 @@ button:hover {
   width: 60%;
   margin-left: 20%;
   margin-right: 20%;
-  padding-top: 2%;
 }
 
-#UI{
-  margin-bottom: 4vh;
+#bar{
+  margin-bottom: 0;
 }
 
 .graderDiv{
   min-height: 80vh;
+  width: 80%;
+  margin-left: 20%;
+  padding-top: 13vh;
+  padding-bottom: 2vh;
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-end;
+  justify-content: space-evenly;
 }
+

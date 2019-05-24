@@ -77,10 +77,17 @@ class grader extends React.Component {
 
         var reportArray = this.report();
         var  showing  = this.state.showReport;
+        var buttonCaption;
+        if (showing){
+            buttonCaption = "Hide Report"
+        }else{
+            buttonCaption = "Show Report"
+        }
 
         return(
 
             <div id="outputFields" class="ui segment">
+
                 <div>
                     <p>Final Mark: {this.marker()}</p>
                 </div>
@@ -90,13 +97,15 @@ class grader extends React.Component {
                 <div>
                     <p>Lost So Far: {this.lostFeedback()}</p>
                 </div>
+
                 <div>
                     <p>Accumulated: {this.accumulatedFeedback()}</p>
                 </div>
 
                 <div class="ui divider" id="homePageUpperDivider"></div>
 
-                <button  id="showReportButton" onClick={() => this.setState({ showReport: !showing })}>Show Report</button>
+                <button  id="showReportButton" onClick={() => this.setState({ showReport: !showing })}>{buttonCaption}</button>
+                
                 { showing 
                     ?
                     <div id="reportSection">
@@ -284,9 +293,11 @@ class grader extends React.Component {
 
     modal(){
 
+        var button = <button id="modalTrigger" class="ui inverted primary button" onClick={this.handleOpen}>help</button>
+
         return (
             <Modal            
-                trigger={<Button onClick={this.handleOpen}>Help</Button>}
+                trigger={button}
                 open={this.state.showModal}
                 onClose={this.handleClose}
                 basic
@@ -316,13 +327,13 @@ class grader extends React.Component {
         var progress = this.accumulatedFeedback().toString() + "%";
     
         return(
-            <div className = "testApp">
-    
-            <div class="ui active indicating progress" data-percent={progress}>
-            <div id="bar" style={{width:progress}}class="bar"><div class="progress">{progress}</div></div>
+            
+            <div id="bar" class="ui active indicating progress" data-percent={progress}>
+                <div style={{width:progress}}class="bar">
+                    <div class="progress">{progress}</div>
+                </div>
             </div>
-         
-        </div>
+
         )
     }
     
@@ -334,14 +345,12 @@ class grader extends React.Component {
         <div className="graderDiv">
 
 
-            <div className = "progressBar">
-                {this.showProgress()}
-            </div>
+            <div className = "container">
 
-
-            <div className = "bottomSection">
 
                 <div id="UI" class="ui segment">
+                
+                    {this.modal()}
 
                     <div className="UITop">
                         {this.addResetButtons()}
@@ -351,15 +360,18 @@ class grader extends React.Component {
                     {this.createUI()}
 
                 </div>
-                
-                <div className="OutputSection">
-                    {this.output()}
-                </div>
-
-                {this.modal()}
 
             </div>
 
+
+            <div className="OutputSection">
+                {this.showProgress()}   
+                {this.output()}
+            </div>
+
+            
+
+            
         </div>
     );
     }
