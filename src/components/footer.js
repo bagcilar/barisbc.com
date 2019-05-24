@@ -42,6 +42,7 @@ class Footer extends Component {
 
       return (
             <div className="FooterDiv">
+
               {this.navigation()}
               <div className="FooterInnerDiv">
                 <a href="https://github.com/bagcilar" id="gitNav" target="_blank" rel="noopener noreferrer"><img src={githubIcon} id="gitIcon" ></img></a>
