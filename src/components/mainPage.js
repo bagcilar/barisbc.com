@@ -103,7 +103,7 @@ class mainPage extends Component {
 
 
         <section ref={this.contactRef} className = "contactSection">
-        
+        < Contact />
         </section>
 
       </div>

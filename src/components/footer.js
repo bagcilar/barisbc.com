@@ -19,7 +19,7 @@ class Footer extends Component {
 
   navigation(){
 
-    if (window.location.pathname == "/"){
+    if (window.location.hash == "#/"){
     
       return (
         <button id = "footerStartButton" onClick={() => {this.scroll()}}>
@@ -38,15 +38,15 @@ class Footer extends Component {
 
   render() {
 
-    if (window.location.pathname != "/resume"){
+    if (window.location.hash != "#/resume"){
 
       return (
             <div className="FooterDiv">
               {this.navigation()}
               <div className="FooterInnerDiv">
                 <a href="https://github.com/bagcilar" id="gitNav" target="_blank" rel="noopener noreferrer"><img src={githubIcon} id="gitIcon" ></img></a>
-                <a href="https://www.instagram.com/barisbc22/" id="instaNav" target="_blank" rel="noopener noreferrer"><img src={instaIcon} id="instaIcon"></img></a>
                 <a href="https://ca.linkedin.com/in/baris-bagcilar-361b42108" id="linkNav" target="_blank" rel="noopener noreferrer"><img src={linkedinIcon} id="linkIcon"></img></a>
+                <a href="https://www.instagram.com/barisbc22/" id="instaNav" target="_blank" rel="noopener noreferrer"><img src={instaIcon} id="instaIcon"></img></a>
               </div>
               <div id="footerTray" class="ui divider" ></div>
             </div>

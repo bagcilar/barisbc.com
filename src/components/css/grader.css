@@ -82,9 +82,14 @@ button:hover {
 .progressBar{
   width: 60%;
   margin-left: 20%;
-  margin-right: 20%
+  margin-right: 20%;
+  padding-top: 2%;
+}
+
+#UI{
+  margin-bottom: 4vh;
 }
 
 .graderDiv{
-  height: 80vh;
+  min-height: 80vh;
 }

@@ -6,18 +6,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+    bottom: 0;
 }
 
 .FooterInnerDiv{
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    align-content: center;
-    height: 5vh;
     margin: 0 auto;
 }
 
@@ -41,7 +33,6 @@
 #footerTray{
     width: 25vh;
 }
-
 
 #footerStartButton{
     background:none!important;
@@ -74,7 +65,7 @@
     font-size: 130%;
     transition: 0.4s ease-in-out;
     color: grey;
-    padding-bottom: 1%;
+    padding-bottom: 3%;
 }
 
 #homeNav:hover{

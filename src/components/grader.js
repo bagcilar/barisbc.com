@@ -313,7 +313,6 @@ class grader extends React.Component {
 
     showProgress(){
 
-
         var progress = this.accumulatedFeedback().toString() + "%";
     
         return(
@@ -327,7 +326,6 @@ class grader extends React.Component {
         )
     }
     
-
 
     render() {
 
@@ -360,10 +358,7 @@ class grader extends React.Component {
 
                 {this.modal()}
 
-
             </div>
-
-
 
         </div>
     );
