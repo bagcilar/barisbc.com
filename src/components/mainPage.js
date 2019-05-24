@@ -5,7 +5,7 @@ import Particles from 'react-particles-js';
 
 import AboutMe from './aboutme.js';
 import Projects from './projects.js';
-import Contact from './contactMe.js';
+import Contact from './contact.js';
 
 import {particlesOptions} from './homeFunctions';
 import {greeter} from './homeFunctions';

@@ -280,6 +280,7 @@ class grader extends React.Component {
         if (totalWeight !== 100){
           errorMessage = "totalWeight";
         }
+
        
         for (let i = 0; i < components.length; i++){
  
@@ -288,6 +289,10 @@ class grader extends React.Component {
             }else if (components[i].mark === "" || components[i].mark < 0){
                 errorMessage = "markError";
             }
+        }
+
+        if (totalWeight > 100){
+            errorMessage = "exceededWeight";
         }
 
         return errorMessage;
@@ -328,6 +333,34 @@ class grader extends React.Component {
           
     }
 
+
+    weightErrorDisplay(){
+
+        var showCondition = this.errorCheck() === "exceededWeight"
+
+        if (showCondition){
+            alert("total weight cannot exceed 100!")
+        }
+            // return (
+            //     <Modal
+            //     size='small'
+            //     basic
+            //     open={showCondition}
+            //     onClose={this.handleErrorClose}
+            //     >
+            //       <Modal.Content>
+            //         <p>Total weight value cannot exceed 100!</p>
+            //       </Modal.Content>
+
+            //       <Modal.Actions>
+            //     <Button color='green' onClick={this.handleErrorClose} inverted><Icon name='checkmark'/>Got it</Button>
+            //     </Modal.Actions>
+    
+            //     </Modal>
+            // )
+        
+    }
+
     showProgress(){
 
         var progress = this.accumulatedFeedback().toString() + "%";
@@ -350,6 +383,7 @@ class grader extends React.Component {
 
         <div className="graderDiv">
 
+            {this.weightErrorDisplay()}
 
             <div className = "container">
 
@@ -373,15 +407,12 @@ class grader extends React.Component {
 
             </div>
 
-
             <div className="OutputSection">
                 {this.showProgress()}   
                 {this.output()}
             </div>
 
-            
 
-            
         </div>
     );
     }

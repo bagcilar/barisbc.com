@@ -1,9 +1,8 @@
 .contactSegment{
     display: flex;
     flex-direction: column;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 30%;
+    margin-right: 30%;
     align-items: center;
     justify-items: center;
     justify-content: center;
@@ -13,6 +12,7 @@
 
 #contactForm{
     width: 100%;
+    min-width: 45vh;
 }
 
 #nameLabel, #emailLabel{
