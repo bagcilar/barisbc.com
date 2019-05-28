@@ -10,6 +10,13 @@
     height: 100%;
 }
 
+.contactHeader{
+    font-family: "Montserrat";
+    font-size: 250%;
+    color: grey;
+    margin-bottom: 0;
+  }
+
 #contactForm{
     width: 100%;
     min-width: 45vh;
@@ -18,4 +25,8 @@
 #nameLabel, #emailLabel{
     font-family: "Montserrat";
     color: gray;
+}
+
+#contactTray{
+    margin-bottom: 50%;
 }

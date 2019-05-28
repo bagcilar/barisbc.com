@@ -24,6 +24,12 @@ class ContactMe extends Component {
 
         <div className = "contactSegment">
 
+
+            <div>
+              <p className = "contactHeader">contact</p>
+              <div class="ui divider" id="contactTray"></div>
+            </div>
+
             <form class="ui form" id="contactForm"> 
 
                 <div class="field">

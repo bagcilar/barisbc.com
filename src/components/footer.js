@@ -5,6 +5,7 @@ import githubIcon from '../res/github.png'
 import linkedinIcon from '../res/linkedin.png'
 import instaIcon from '../res/instagram.png'
 
+
 class Footer extends Component {
 
 
@@ -35,6 +36,7 @@ class Footer extends Component {
     }
 
   }
+
 
   render() {
 
