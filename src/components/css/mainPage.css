@@ -8,16 +8,16 @@
     justify-items: center;
 }
 
-.homeSection, .particles, .projectsSection, .aboutMeSection, .projectsSection{
+#homeSection, .particles, #projectsSection, #aboutMeSection, #projectsSection{
     height: 100vh;
     box-sizing: border-box;
 }
 
-.homeSection, .contactSection{
+#homeSection, #contactSection{
     width: 100%;
 }
 
-.projectsSection, .aboutMeSection{
+#projectsSection, #aboutMeSection{
     width: 60%;
     min-width: 50vh;
     background-color:  rgb(248,248,248);
@@ -25,12 +25,12 @@
 }
 
 
-.homeSection{
+#homeSection{
     background-color:  rgb(36, 39, 49);
     font-family: "Montserrat";
 }
 
-.contactSection{
+#contactSection{
     background-color:  rgb(36, 39, 49);
     height: 80vh;
 }
@@ -60,14 +60,14 @@
     color:brown;
 }
 
-#startButton, #homeSectionButton, #projectsSectionButton, #aboutMeSectionButton, #contactSectionButton, #resumeNav{
+#startButton, #homeSectionButton, #projectsSectionButton, #aboutSectionButton, #contactSectionButton, #resumeNav{
     background:none!important;
     border:none; 
     font-family: "Montserrat";
     cursor: pointer;
     padding-top: 1vh;
     padding: 2%;
-    font-size: 130%;
+    font-size: 2.5vh;
     outline: none;    
     transition: 0.4s ease-in-out;
     color: grey;
@@ -78,7 +78,7 @@
     margin-left: 1%;
 }
 
-#startButton:hover, #homeSectionButton:hover, #projectsSectionButton:hover, #aboutMeSectionButton:hover, #contactSectionButton:hover, #resumeNav:hover{
+#startButton:hover, #homeSectionButton:hover, #projectsSectionButton:hover, #aboutSectionButton:hover, #contactSectionButton:hover, #resumeNav:hover{
     color:brown;
 }
 
