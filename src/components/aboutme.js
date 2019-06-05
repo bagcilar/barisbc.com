@@ -21,7 +21,7 @@ class AboutMe extends Component {
       <div className="aboutMeDiv">
 
         <div>
-          <p className="aboutHeader">about me</p>
+          <p id="aboutHeader">about me</p>
           <div class="ui divider" ></div>
         </div>
 

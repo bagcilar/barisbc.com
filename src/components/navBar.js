@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './css/App.css';
+import './css/navBar.css';
 import { NavLink } from "react-router-dom";
-import { navColourAdjuster } from './mainPage.js';
+import { navColourAdjuster } from './helperFunctions.js';
 
 
 class navBar extends Component {
@@ -36,6 +36,7 @@ class navBar extends Component {
     });
 
     navColourAdjuster(target);
+    
   }
 
 

@@ -36,8 +36,10 @@
     font-family: "Montserrat";
 }
 
-.aboutHeader{
+#aboutHeader{
     font-family: "Montserrat";
     font-size: 250%;
     margin-bottom: 2%;
+    color: grey;
+    transition: 2s ease-in-out;
   }

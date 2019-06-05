@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
-import { navColourAdjuster } from './mainPage.js';
+import { navColourAdjuster } from './helperFunctions.js';
+import './css/home.css';
 
 //obtains time of user and sets the greeting message
 function greeter() {

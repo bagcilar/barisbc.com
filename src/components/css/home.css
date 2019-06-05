@@ -1,0 +1,24 @@
+.WelcomeMessageDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 45vh;
+    bottom: 50vh;
+    left: 30vh;
+    right: 30vh;
+    color: white;
+    box-sizing: border-box;
+}
+
+#timeGreeting{
+    font-size: 350%;
+}
+#welcomeMessage{
+    font-size: 200%;
+}
+
+#welcomeMessagePart2{
+    color:brown;
+}

@@ -22,7 +22,7 @@ class ContactMe extends Component {
             <div className="contactSegment">
 
                 <div>
-                    <p className="contactHeader">contact</p>
+                    <p id="contactHeader">contact</p>
                     <div class="ui divider" id="contactTray"></div>
                 </div>
 

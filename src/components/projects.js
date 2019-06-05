@@ -17,7 +17,7 @@ class Projects extends Component {
             <div className="ProjectsDiv">
 
                 <div>
-                    <p className="projectsHeader">projects</p>
+                    <p id="projectsHeader">projects</p>
                     <div class="ui divider" ></div>
                 </div>
 
