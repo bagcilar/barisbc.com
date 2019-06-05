@@ -1,87 +1,87 @@
 import React, { Component } from 'react';
-import {Form, Button, Divider, Modal, Icon, Progress, Checkbox} from 'semantic-ui-react'
+import { Form, Button, Divider, Modal, Icon, Progress, Checkbox } from 'semantic-ui-react'
 import './css/grader.css';
 
 class grader extends React.Component {
     constructor(props) {
-      super(props);
-      this.state = {
-          components: [{ name: "", weight: "", mark: "" }],
-          markingScheme: 'percentage',
-          showReport: false,
-          showModal: false
-      };
-    }
-    
-    addClick(){
-      this.setState(prevState => ({ 
-        components: [...prevState.components, { name: "", weight: "", mark: "" }]
-      }))
+        super(props);
+        this.state = {
+            components: [{ name: "", weight: "", mark: "" }],
+            markingScheme: 'percentage',
+            showReport: false,
+            showModal: false
+        };
     }
 
-    removeClick(i){
+    addClick() {
+        this.setState(prevState => ({
+            components: [...prevState.components, { name: "", weight: "", mark: "" }]
+        }))
+    }
+
+    removeClick(i) {
         let components = [...this.state.components];
-        if (components.length !== 1){
-         components.splice(i, 1);
-         this.setState({ components });
+        if (components.length !== 1) {
+            components.splice(i, 1);
+            this.setState({ components });
         }
     }
 
-    handleChange(i, e){
+    handleChange(i, e) {
         const { name, value } = e.target;
         let components = [...this.state.components];
-        components[i] = {...components[i], [name]: value};
+        components[i] = { ...components[i], [name]: value };
         this.setState({ components });
-   }
+    }
 
 
-    createUI(){
+    createUI() {
         return this.state.components.map((el, i) => (
             <div class="ui form" key={i}>
-                
+
                 <div class="inline fields" className="UIComponents">
-                    
+
                     <div class="field">
-                        <input id="nameField" type= "text" placeholder="name" name="name" value={el.name ||''} onChange={this.handleChange.bind(this, i)} />
+                        <input id="nameField" type="text" placeholder="name" name="name" value={el.name || ''} onChange={this.handleChange.bind(this, i)} />
                     </div>
-                    
+
                     <div className="WeightMarkInputs">
                         <div class="field">
-                            <input id="weightField" className = "weightField" type= "number" placeholder="weight" name="weight" value={el.weight ||''} onChange={this.handleChange.bind(this, i)} />
+                            <input id="weightField" className="weightField" type="number" placeholder="weight" name="weight" value={el.weight || ''} onChange={this.handleChange.bind(this, i)} />
                         </div>
                         <div class="field">
-                            <input id="markField" type = "number" placeholder={this.state.markingScheme} name="mark" value={el.mark ||''} onChange={this.handleChange.bind(this, i)} />
+                            <input id="markField" type="number" placeholder={this.state.markingScheme} name="mark" value={el.mark || ''} onChange={this.handleChange.bind(this, i)} />
                         </div>
                     </div>
 
                     <button class="ui inverted red button" id="removeButton" onClick={this.removeClick.bind(this, i)}>remove</button>
-               
+
                 </div>
-            </div>         
-       ))
+            </div>
+        ))
     }
 
-    addResetButtons(){
-        return(
-            <div className = "AddResetButtons">
+    addResetButtons() {
+        return (
+            <div className="AddResetButtons">
                 <button className="AddButton" class="ui primary button" onClick={this.addClick.bind(this)}>add</button>
                 <button className="ResetButton" class="ui grey button" onClick={this.reset.bind(this)}>reset</button>
             </div>
         )
     }
 
-    output(){
+    output() {
 
         var reportArray = this.report();
-        var showing  = this.state.showReport;
+        var showing = this.state.showReport;
         var buttonCaption;
-        if (showing){
+        if (showing) {
             buttonCaption = "Hide Report"
-        }else{
+        } else {
             buttonCaption = "Show Report"
         }
 
-        return(
+        return (
 
             <div id="outputFields" class="ui segment">
 
@@ -101,9 +101,9 @@ class grader extends React.Component {
 
                 <div class="ui divider" id="homePageUpperDivider"></div>
 
-                <button  id="showReportButton" onClick={() => this.setState({ showReport: !showing })}>{buttonCaption}</button>
-                
-                { showing 
+                <button id="showReportButton" onClick={() => this.setState({ showReport: !showing })}>{buttonCaption}</button>
+
+                {showing
                     ?
                     <div id="reportSection">
                         <p>95%: {reportArray[0]}</p>
@@ -120,78 +120,78 @@ class grader extends React.Component {
                     : null
                 }
 
-            </div>  
+            </div>
         )
     }
 
-    changeScheme (e){
-         this.setState({ markingScheme: e.target.value});
+    changeScheme(e) {
+        this.setState({ markingScheme: e.target.value });
     }
 
-    selectScheme(){
+    selectScheme() {
 
         var perButtonStyle, markButtonStyle;
 
-        if (this.state.markingScheme === "percentage"){
+        if (this.state.markingScheme === "percentage") {
             perButtonStyle = "ui positive button active"
             markButtonStyle = "ui button"
-        }else{
+        } else {
             markButtonStyle = "ui positive button active"
             perButtonStyle = "ui button"
         }
 
         return (
             <div id="schemeToggleDiv" class="ui buttons">
-                <button id= "percToggleButton" class= {perButtonStyle} onClick={this.changeScheme.bind(this)} value="percentage">%</button>
+                <button id="percToggleButton" class={perButtonStyle} onClick={this.changeScheme.bind(this)} value="percentage">%</button>
                 <div class="or"></div>
-                <button id= "markToggleButton" class= {markButtonStyle} onClick={this.changeScheme.bind(this)} value="mark">mark</button>
+                <button id="markToggleButton" class={markButtonStyle} onClick={this.changeScheme.bind(this)} value="mark">mark</button>
             </div>
         )
     }
 
-    reset(){
+    reset() {
         let components = [...this.state.components];
-        if (components.length > 1){
-          components.splice(0, components.length - 1);
+        if (components.length > 1) {
+            components.splice(0, components.length - 1);
         }
         components[0].weight = "";
         components[0].name = "";
         components[0].mark = "";
-        this.setState({ components });     
-      }
-    
+        this.setState({ components });
+    }
+
 
     //calculates final mark
-    marker(){
+    marker() {
         let components = [...this.state.components];
         var finalGrade = 0;
 
-        for (let i = 0; i < components.length; i++){
+        for (let i = 0; i < components.length; i++) {
 
-            if (this.state.markingScheme === 'percentage'){
+            if (this.state.markingScheme === 'percentage') {
                 finalGrade += (components[i].weight / 100) * components[i].mark;
-            }else{
+            } else {
                 finalGrade += components[i].mark * 1;
             }
         }
-        
-        if (this.errorCheck() === ""){
+
+        if (this.errorCheck() === "") {
             return Math.round(finalGrade * 100) / 100;
-        }else{
+        } else {
             return null;
         }
     }
 
     //calculates lost marks
-    lostFeedback(){
+    lostFeedback() {
         let components = [...this.state.components];
         var lost = 0;
-        for (let i = 0; i < components.length; i++){
-            if (components[i].weight !== "" && components[i].mark !== ""){
+        for (let i = 0; i < components.length; i++) {
+            if (components[i].weight !== "" && components[i].mark !== "") {
 
-                if (this.state.markingScheme === 'percentage'){
+                if (this.state.markingScheme === 'percentage') {
                     lost += components[i].weight - (components[i].weight / 100) * components[i].mark;
-                }else{
+                } else {
                     lost += components[i].weight - components[i].mark;
                 }
             }
@@ -200,16 +200,16 @@ class grader extends React.Component {
     }
 
     //calculates accumulated marks
-    accumulatedFeedback(){
+    accumulatedFeedback() {
         let components = [...this.state.components];
         var acc = 0;
-        for (let i = 0; i < components.length; i++){
+        for (let i = 0; i < components.length; i++) {
 
-            if (components[i].weight !== "" && components[i].mark !== ""){
+            if (components[i].weight !== "" && components[i].mark !== "") {
 
-                if (this.state.markingScheme === 'percentage'){
+                if (this.state.markingScheme === 'percentage') {
                     acc += components[i].weight / 100 * components[i].mark;
-                }else{
+                } else {
                     acc += components[i].mark * 1;
                 }
             }
@@ -217,7 +217,7 @@ class grader extends React.Component {
         return Math.round(acc * 100) / 100;
     }
 
-    report(){
+    report() {
         let components = [...this.state.components];
         var totalAccumulated = this.accumulatedFeedback();
         var totalEnteredWeight = 0;
@@ -226,32 +226,32 @@ class grader extends React.Component {
         var report = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
 
 
-        for (let i = 0; i < components.length; i++){
-            if (components[i].weight !== "" && components[i].mark === ""){
+        for (let i = 0; i < components.length; i++) {
+            if (components[i].weight !== "" && components[i].mark === "") {
                 unmarkedWeights.push(i);
             }
             totalEnteredWeight += components[i].weight * 1;
         }
 
         //calculate the report based on remaining weights
-        if (totalEnteredWeight !== 100){
+        if (totalEnteredWeight !== 100) {
             totalUnmarkedWeight = 100 - totalEnteredWeight;
 
-        //calculate the report based on remaining unmarked weights
-        }else if (unmarkedWeights.length > 0){
-            for (let i = 0; i < unmarkedWeights.length; i++){
+            //calculate the report based on remaining unmarked weights
+        } else if (unmarkedWeights.length > 0) {
+            for (let i = 0; i < unmarkedWeights.length; i++) {
                 totalUnmarkedWeight += components[unmarkedWeights[i]].weight * 1;
             }
         }
 
-        if (totalEnteredWeight === 100 && this.errorCheck() !== ""){
+        if (totalEnteredWeight === 100 && this.errorCheck() !== "") {
             var index = 0;
             var cutoff;
-            for (let i = 94.5; i > 49; i-=5){
+            for (let i = 94.5; i > 49; i -= 5) {
 
-                if (this.state.markingScheme === 'percentage'){
+                if (this.state.markingScheme === 'percentage') {
                     cutoff = (i - totalAccumulated) / (totalUnmarkedWeight / 100);
-                }else{
+                } else {
                     cutoff = i - totalAccumulated;
                 }
                 report[index] = Math.round(cutoff * 100) / 100;
@@ -259,9 +259,9 @@ class grader extends React.Component {
             }
         }
 
-        for (let i = 0; i < report.length; i++){
-            if (report[i] < 0){
-                report[i] = <Icon name='checkmark'/>;
+        for (let i = 0; i < report.length; i++) {
+            if (report[i] < 0) {
+                report[i] = <Icon name='checkmark' />;
             }
         }
 
@@ -269,29 +269,29 @@ class grader extends React.Component {
 
     }
 
-    errorCheck(){
+    errorCheck() {
         var errorMessage = "";
         var components = this.state.components;
         var totalWeight = 0;
 
-        for (let i = 0; i < components.length; i++){
-          totalWeight = totalWeight + parseFloat(components[i].weight);
+        for (let i = 0; i < components.length; i++) {
+            totalWeight = totalWeight + parseFloat(components[i].weight);
         }
-        if (totalWeight !== 100){
-          errorMessage = "totalWeight";
+        if (totalWeight !== 100) {
+            errorMessage = "totalWeight";
         }
 
-       
-        for (let i = 0; i < components.length; i++){
- 
-            if (components[i].weight === "" || components[i].weight < 1 || components[i].weight > 100){
+
+        for (let i = 0; i < components.length; i++) {
+
+            if (components[i].weight === "" || components[i].weight < 1 || components[i].weight > 100) {
                 errorMessage = "weightError";
-            }else if (components[i].mark === "" || components[i].mark < 0){
+            } else if (components[i].mark === "" || components[i].mark < 0) {
                 errorMessage = "markError";
             }
         }
 
-        if (totalWeight > 100){
+        if (totalWeight > 100) {
             errorMessage = "exceededWeight";
         }
 
@@ -302,120 +302,95 @@ class grader extends React.Component {
 
     handleClose = () => this.setState({ showModal: false })
 
-    modal(){
+    modal() {
 
         var button = <button id="modalTrigger" class="ui inverted blue button" onClick={this.handleOpen}>help</button>
 
         return (
-            <Modal            
+            <Modal
                 trigger={button}
                 open={this.state.showModal}
                 onClose={this.handleClose}
                 basic
                 size='small'
             >
-              <Modal.Content>
-                <p>● Enter weights as percentages /100. The weights in total should equal 100</p>
-                <p>● When a weight and mark is added for a given component, you will be presented with continuous feedback</p>
-                <p>● When all weights and marks are added, the final mark will appear automatically</p>
-                <p>● If you press 'show report', you  will be presented with the performance necessary to obtain the specified grade points</p>
-                <p>● This function is available only when all weights have been entered and there are unmarked components</p>
-                <p>● The necessary performance is displayed as the average performance needed for the unmarked components</p>
-              </Modal.Content>
+                <Modal.Content>
+                    <p>● Enter weights as percentages /100. The weights in total should equal 100</p>
+                    <p>● When a weight and mark is added for a given component, you will be presented with continuous feedback</p>
+                    <p>● When all weights and marks are added, the final mark will appear automatically</p>
+                    <p>● If you press 'show report', you  will be presented with the performance necessary to obtain the specified grade points</p>
+                    <p>● This function is available only when all weights have been entered and there are unmarked components</p>
+                    <p>● The necessary performance is displayed as the average performance needed for the unmarked components</p>
+                </Modal.Content>
 
-              <Modal.Actions>
-                <Button color='green' onClick={this.handleClose} inverted><Icon name='checkmark'/>Got it</Button>
-              </Modal.Actions>
+                <Modal.Actions>
+                    <Button color='green' onClick={this.handleClose} inverted><Icon name='checkmark' />Got it</Button>
+                </Modal.Actions>
 
             </Modal>
 
-          )
-          
+        )
+
     }
 
 
-    weightErrorDisplay(){
+    weightErrorDisplay() {
 
-        var showCondition = this.errorCheck() === "exceededWeight"
-
-        if (showCondition){
-            alert("total weight cannot exceed 100!")
-        }
-            // return (
-            //     <Modal
-            //     size='small'
-            //     basic
-            //     open={showCondition}
-            //     onClose={this.handleErrorClose}
-            //     >
-            //       <Modal.Content>
-            //         <p>Total weight value cannot exceed 100!</p>
-            //       </Modal.Content>
-
-            //       <Modal.Actions>
-            //     <Button color='green' onClick={this.handleErrorClose} inverted><Icon name='checkmark'/>Got it</Button>
-            //     </Modal.Actions>
-    
-            //     </Modal>
-            // )
-        
     }
 
-    showProgress(){
+    showProgress() {
 
         var progress = this.accumulatedFeedback().toString() + "%";
-    
-        return(
-            
+
+        return (
+
             <div id="bar" class="ui active indicating progress" data-percent={progress}>
-                <div style={{width:progress, maxWidth: "100%"}}class="bar">
+                <div style={{ width: progress, maxWidth: "100%" }} class="bar">
                     <div class="progress">{progress}</div>
                 </div>
             </div>
 
         )
     }
-    
+
 
     render() {
 
         return (
 
-        <div className="graderDiv">
+            <div className="graderDiv">
 
-            {this.weightErrorDisplay()}
-
-            <div className = "container">
+                <div className="container">
 
 
-                <div id="UI" class="ui segment">
+                    <div id="UI" class="ui segment">
 
-                    <div className="UITop">
-                        {this.modal()}
-                        {this.selectScheme()}
-                    </div>
-                
-                    <div className="UIMiddle">
-                        {this.addResetButtons()}
-                    </div>
+                        <div className="UITop">
+                            {this.modal()}
+                            {this.selectScheme()}
+                        </div>
 
-                    <div className="UIBottom">
-                        {this.createUI()}
+                        <div className="UIMiddle">
+                            {this.addResetButtons()}
+                        </div>
+
+                        <div className="UIBottom">
+                            {this.createUI()}
+                        </div>
+
                     </div>
 
                 </div>
 
+                <div className="OutputSection">
+                    {this.showProgress()}
+                    {this.output()}
+                </div>
+
+
             </div>
-
-            <div className="OutputSection">
-                {this.showProgress()}   
-                {this.output()}
-            </div>
-
-
-        </div>
-    );
+        );
     }
 }
-  
+
 export default grader;
