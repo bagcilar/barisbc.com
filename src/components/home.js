@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Particles from 'react-particles-js';
 import { navColourAdjuster } from './mainPage.js';
 
-
+//obtains time of user and sets the greeting message
 function greeter() {
     var greetMessage = "";
     var date = new Date();
@@ -17,6 +17,7 @@ function greeter() {
     return greetMessage;
 }
 
+//sets the options for particles.js
 const particlesOptions = {
     particles: {
         number: {

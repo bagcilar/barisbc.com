@@ -13,12 +13,14 @@ class grader extends React.Component {
         };
     }
 
+    //handles the addition of a component
     addClick() {
         this.setState(prevState => ({
             components: [...prevState.components, { name: "", weight: "", mark: "" }]
         }))
     }
 
+    //handles the removal of a component
     removeClick(i) {
         let components = [...this.state.components];
         if (components.length !== 1) {
@@ -27,6 +29,7 @@ class grader extends React.Component {
         }
     }
 
+    //handles the changes in the state of components
     handleChange(i, e) {
         const { name, value } = e.target;
         let components = [...this.state.components];
@@ -34,7 +37,7 @@ class grader extends React.Component {
         this.setState({ components });
     }
 
-
+    //handles the dynamic UI creation that involves name, weight, mark fields and associated remove buttons
     createUI() {
         return this.state.components.map((el, i) => (
             <div class="ui form" key={i}>
@@ -46,12 +49,15 @@ class grader extends React.Component {
                     </div>
 
                     <div className="WeightMarkInputs">
+
                         <div class="field">
                             <input id="weightField" className="weightField" type="number" placeholder="weight" name="weight" value={el.weight || ''} onChange={this.handleChange.bind(this, i)} />
                         </div>
+
                         <div class="field">
                             <input id="markField" type="number" placeholder={this.state.markingScheme} name="mark" value={el.mark || ''} onChange={this.handleChange.bind(this, i)} />
                         </div>
+
                     </div>
 
                     <button class="ui inverted red button" id="removeButton" onClick={this.removeClick.bind(this, i)}>remove</button>
@@ -61,6 +67,7 @@ class grader extends React.Component {
         ))
     }
 
+    //buttons that handle adding components and reseting grader
     addResetButtons() {
         return (
             <div className="AddResetButtons">
@@ -70,6 +77,7 @@ class grader extends React.Component {
         )
     }
 
+    //handles the output of feedback, final mark, and report
     output() {
 
         var reportArray = this.report();
@@ -124,10 +132,12 @@ class grader extends React.Component {
         )
     }
 
+    //obtains the selected performance option for calculation purposes
     changeScheme(e) {
         this.setState({ markingScheme: e.target.value });
     }
 
+    //handles the toggling between 'percentage' and 'mark' performances
     selectScheme() {
 
         var perButtonStyle, markButtonStyle;
@@ -149,6 +159,7 @@ class grader extends React.Component {
         )
     }
 
+    //resets the grader fields
     reset() {
         let components = [...this.state.components];
         if (components.length > 1) {
@@ -217,6 +228,7 @@ class grader extends React.Component {
         return Math.round(acc * 100) / 100;
     }
 
+    //provides report that shows the required performances for grade points
     report() {
         let components = [...this.state.components];
         var totalAccumulated = this.accumulatedFeedback();
@@ -269,6 +281,7 @@ class grader extends React.Component {
 
     }
 
+    //error is returned if weights do not total 100 or if all marks are not entered
     errorCheck() {
         var errorMessage = "";
         var components = this.state.components;
@@ -298,10 +311,12 @@ class grader extends React.Component {
         return errorMessage;
     }
 
+    //functions that handle the showing and hiding of help modal
     handleOpen = () => this.setState({ showModal: true })
 
     handleClose = () => this.setState({ showModal: false })
 
+    //modal that shows instructions
     modal() {
 
         var button = <button id="modalTrigger" class="ui inverted blue button" onClick={this.handleOpen}>help</button>
@@ -333,11 +348,12 @@ class grader extends React.Component {
 
     }
 
-
+    //displays error when weights in total exceed 100
     weightErrorDisplay() {
 
     }
 
+    //progress bar that shows the cumulated marks
     showProgress() {
 
         var progress = this.accumulatedFeedback().toString() + "%";

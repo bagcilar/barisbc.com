@@ -7,6 +7,7 @@ import instaIcon from '../res/instagram.png'
 
 class Footer extends Component {
 
+  //handles scrolling to the top of the page
   scroll() {
 
     window.scroll({
@@ -16,6 +17,8 @@ class Footer extends Component {
 
   }
 
+  //displays a double arrow icon when on mainPage
+  //or 'home' when on other pages for navigation to the top of page
   navigation() {
 
     if (window.location.hash == "#/") {
