@@ -22,11 +22,10 @@ function navColourAdjuster(target){
 class mainPage extends Component {
 
   constructor(props) {
-    super(props)
-    this.homeRef = React.createRef()
-    this.projectsRef = React.createRef()
-    this.aboutMeRef = React.createRef()
-    this.contactRef = React.createRef()
+    super(props);
+    this.state = {
+      lastHovered: 'homeSectionButton'
+  };
   }
 
 
@@ -52,7 +51,6 @@ class mainPage extends Component {
     });
 
     navColourAdjuster(target);
-
   }
 
   //listens for scrolling events
@@ -61,7 +59,7 @@ class mainPage extends Component {
   }
  
   componentWillUnmount() {
-   window.removeEventListener('scroll', this.onWindowScroll);
+    window.removeEventListener('scroll', this.onWindowScroll);
   }
 
   //checks the current viewport location when there is a scroll, adjusts colour of nav bar item accordingly
@@ -86,6 +84,30 @@ class mainPage extends Component {
     }
   }
 
+  //changes the colour of nav element to brown on hover
+  handleHover(target){
+    var element = document.getElementById(target);
+    
+    //checks if hovered item is in view, if so sets the state
+    if (element.style.color=="brown"){
+      this.setState({ lastHovered: target })
+    }
+
+    element.style.color="brown"
+
+  }
+
+  //changes the colour of nav item to grey on mouseleave unless it signifies the section in view
+  handleLeave(target){
+    var element = document.getElementById(target);
+
+    //checks if the item the mouse leaves signifies the section in view
+    //if it doesn't, color is changed to grey
+    if (this.state.lastHovered !== target){
+      element.style.color="grey";
+    }
+  }
+
   render() {
 
     return (
@@ -94,7 +116,6 @@ class mainPage extends Component {
 
         <section id = "homeSection">
 
-          <div>
               <Particles className='particles' params={particlesOptions} />
               <div className="WelcomeMessageDiv">
                 <p id="timeGreeting" align="center">{greeter()}</p>
@@ -103,19 +124,46 @@ class mainPage extends Component {
                   <i class="angle double down icon"></i>  
                 </button>
               </div>
-          </div>
           
         </section>
 
 
         <section className = "headerSection">
+
           <div className = "headerDiv">
-            <button id = "homeSectionButton" ref="homeSectionButton" onClick={() => {this.scroll("home")}}> home </button>
-            <button id = "aboutSectionButton" ref="aboutSectionButton" onClick={() => {this.scroll("about")}}> about me </button>
-            <button id = "projectsSectionButton" ref="projectsSectionButton" onClick={() => {this.scroll("projects")}}> projects </button>
-            <button id = "contactSectionButton" ref="contactSectionButton" onClick={() => {this.scroll("contact")}}> contact </button>
+            <button
+              id = "homeSectionButton"
+              onMouseEnter={() => {this.handleHover("homeSectionButton")}}
+              onMouseLeave={() => {this.handleLeave("homeSectionButton")}}
+              onClick={() => {this.scroll("home")}}>
+              home
+            </button>
+            <button
+              id = "aboutSectionButton"
+              onMouseEnter={() => {this.handleHover("aboutSectionButton")}}
+              onMouseLeave={() => {this.handleLeave("aboutSectionButton")}}
+              onClick={() => {this.scroll("about")}}>
+              about me
+            </button>
+            <button
+              id = "projectsSectionButton"
+              onMouseEnter={() => {this.handleHover("projectsSectionButton")}}
+              onMouseLeave={() => {this.handleLeave("projectsSectionButton")}}
+              onClick={() => {this.scroll("projects")}}>
+              projects
+            </button>
+            <button
+              id = "contactSectionButton"
+              onMouseEnter={() => {this.handleHover("contactSectionButton")}}
+              onMouseLeave={() => {this.handleLeave("contactSectionButton")}}
+              onClick={() => {this.scroll("contact")}}>
+              contact
+            </button>
+
             <NavLink to="/resume" target="_blank" id="resumeNav">resume</NavLink>
+
           </div>
+
         </section>
         
 
@@ -128,7 +176,7 @@ class mainPage extends Component {
         </section>
 
         <section id = "contactSection">
-        < Contact />
+          <Contact />
         </section>
 
       </div>
