@@ -117,7 +117,7 @@ class grader extends React.Component {
                         <p>95%: {reportArray[0]}</p>
                         <p>90%: {reportArray[1]}</p>
                         <p>85%: {reportArray[2]}</p>
-                        <p>90%: {reportArray[3]}</p>
+                        <p>80%: {reportArray[3]}</p>
                         <p>75%: {reportArray[4]}</p>
                         <p>70%: {reportArray[5]}</p>
                         <p>65%: {reportArray[6]}</p>

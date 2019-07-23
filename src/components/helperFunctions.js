@@ -8,7 +8,7 @@ export function navColourAdjuster(target) {
     document.getElementById("aboutSectionButton").style.color = "grey";
     document.getElementById("contactSectionButton").style.color = "grey";
     document.getElementById(target).style.color = "brown";
-  }
+}
 
 //colouring of the section headers according to the target value passed
 export function sectionHeaderColourAdj(target) {
