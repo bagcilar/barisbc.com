@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/static/media/instagram.4a8c2347.png"
   },
   {
-    "revision": "90d03362942071d91dc7",
+    "revision": "c587d86a511b9a7d9f67",
     "url": "/static/css/main.d26e20eb.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = [
     "url": "/static/media/linkedin.34c68c57.png"
   },
   {
-    "revision": "90d03362942071d91dc7",
-    "url": "/static/js/main.90d03362.chunk.js"
+    "revision": "c587d86a511b9a7d9f67",
+    "url": "/static/js/main.c587d86a.chunk.js"
   },
   {
     "revision": "d35511d71bdd39cda0d9b6d88948838c",
@@ -44,11 +44,11 @@ self.__precacheManifest = [
     "url": "/static/media/sleepClock.f6921ce5.png"
   },
   {
-    "revision": "88739791c9acd396ed86b92d160cc608",
-    "url": "/static/media/resume.88739791.pdf"
+    "revision": "9a898a6f603b9e652aa81080c51c6f1d",
+    "url": "/static/media/resume.9a898a6f.pdf"
   },
   {
-    "revision": "4e9172560e365fc30b41828b07edffa7",
+    "revision": "bda1b40254a7c17832c3e2d2d724a34a",
     "url": "/index.html"
   }
 ];
