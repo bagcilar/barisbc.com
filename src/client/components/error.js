@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './css/App.css';
+import './css/error.css';
 
 class error extends Component {
   render() {
     return (
 
-      <div>
+      <div className="error">
         <p>oops! page not found...</p>
       </div>
 

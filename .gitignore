@@ -10,6 +10,8 @@
 
 # production
 
+# config folder
+/src/server/config
 
 # misc
 .DS_Store

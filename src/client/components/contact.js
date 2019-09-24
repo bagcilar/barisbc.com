@@ -1,14 +1,54 @@
 import React, { Component } from 'react';
 import { Form, Button, Divider, Modal, Icon } from 'semantic-ui-react'
+import axios from 'axios';
 
 import './css/contact.css';
 
 class ContactMe extends Component {
 
+    handleSubmit(e){
+        //e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        
 
-    handleSubmit() {
-        alert("thank you for your email!");
-        this.resetForm();
+        if (!this.errorCheck(name, email, message)){
+            axios({
+                method: "POST", 
+                url:"http://localhost:3001/send", 
+                data: {
+                    name: name,
+                    email: email,
+                    message: message
+                }
+            }).then((response)=>{
+                if (response.data.msg === 'success'){
+                    alert("Message Sent."); 
+                    this.resetForm()
+                }else if(response.data.msg === 'fail'){
+                    alert("Message failed to send.")
+                }
+            })
+        }
+    }
+
+    //error checking for form fields
+    errorCheck(name, email, message){
+
+        if (name == "" || email == "" || message == ""){
+
+            if (name == ""){
+                alert("Please enter your name");
+            }else if (email == ""){
+                alert("Please enter your email");
+            }else{
+                alert("Please enter a message");
+            }
+            return true;
+        }else{
+            return false;
+        }
     }
 
     resetForm() {
@@ -35,7 +75,7 @@ class ContactMe extends Component {
 
                     <div class="field">
                         <label id="emailLabel">E-mail</label>
-                        <input placeholder="email" type="text" id="email"></input>
+                        <input placeholder="email" type="email" id="email"></input>
                     </div>
 
                     <div class="field">
