@@ -7,7 +7,7 @@ import './css/contact.css';
 class ContactMe extends Component {
 
     handleSubmit(e){
-        //e.preventDefault();
+        e.preventDefault();
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
@@ -16,7 +16,7 @@ class ContactMe extends Component {
         if (!this.errorCheck(name, email, message)){
             axios({
                 method: "POST", 
-                url:"http://localhost:3001/send", 
+                url:"http://barisbc.com/#/send",
                 data: {
                     name: name,
                     email: email,
