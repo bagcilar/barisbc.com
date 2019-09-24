@@ -11,6 +11,7 @@
     "nodemon": "^1.19.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-mail-form": "^2.0.2",
     "react-particles-js": "^2.6.0",
     "react-pdf": "^4.0.5",
     "react-router-dom": "^4.3.1",
