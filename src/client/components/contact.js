@@ -16,7 +16,7 @@ class ContactMe extends Component {
         if (!this.errorCheck(name, email, message)){
             axios({
                 method: "POST", 
-                url:"http://barisbc.com/#/send",
+                url:"http://barisbc.com/#:3001/send",
                 data: {
                     name: name,
                     email: email,
