@@ -3,10 +3,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter = require('./src/server/routes/index');
+var usersRouter = require('./src/server/routes/users');
 var bodyParser = require('body-parser');
-var index = require('./routes/index');
+var index = require('./src/server/routes/index');
 
 var app = express();
 
@@ -36,7 +36,12 @@ app.get('/*', (req, res, next) => {
     res.sendFile(path.join((__dirname, '../..', 'build')))
 });
 
-const port = process.env.PORT || 3001;
-app.listen(port, () => console.log(`Listening on port ${port}`));
+
+app.listen(
+  process.env.PORT || 5000,
+  function () {
+    console.log(`Frontend start on http://localhost:5000`)
+  }
+);
   
 module.exports = app;

@@ -6,27 +6,27 @@ import './css/contact.css';
 
 class ContactMe extends Component {
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-        
 
-        if (!this.errorCheck(name, email, message)){
+
+        if (!this.errorCheck(name, email, message)) {
             axios({
-                method: "POST", 
-                url:"http://localhost:3001/send",
+                method: "POST",
+                url: "http://localhost:3001/send",
                 data: {
                     name: name,
                     email: email,
                     message: message
                 }
-            }).then((response)=>{
-                if (response.data.msg === 'success'){
-                    alert("Message Sent."); 
+            }).then((response) => {
+                if (response.data.msg === 'success') {
+                    alert("Message Sent.");
                     this.resetForm()
-                }else if(response.data.msg === 'fail'){
+                } else if (response.data.msg === 'fail') {
                     alert("Message failed to send.")
                 }
             })
@@ -34,19 +34,19 @@ class ContactMe extends Component {
     }
 
     //error checking for form fields
-    errorCheck(name, email, message){
+    errorCheck(name, email, message) {
 
-        if (name == "" || email == "" || message == ""){
+        if (name == "" || email == "" || message == "") {
 
-            if (name == ""){
+            if (name == "") {
                 alert("Please enter your name");
-            }else if (email == ""){
+            } else if (email == "") {
                 alert("Please enter your email");
-            }else{
+            } else {
                 alert("Please enter a message");
             }
             return true;
-        }else{
+        } else {
             return false;
         }
     }
