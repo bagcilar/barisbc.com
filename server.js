@@ -17,7 +17,7 @@ app.use(function (req, res, next) {
 });
 
 //serves static files from the React app
-app.use(express.static(path.join(__dirname, '../..', 'build')));
+app.use(express.static(path.join(__dirname, 'build')));
 
 
 app.use(logger('dev'));
@@ -32,8 +32,8 @@ app.use('/api', indexRouter);
 app.use('/users', usersRouter);
 
 
-app.get('/*', (req, res, next) => {
-    res.sendFile(path.join((__dirname, '../..', 'build')))
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build'));
 });
 
 
