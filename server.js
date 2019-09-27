@@ -40,7 +40,7 @@ app.get('*', function (req, res) {
 app.listen(
   process.env.PORT || 8080,
   function () {
-    console.log(`Frontend start on http://localhost:5000`)
+    console.log(`Frontend start on http://localhost:8080`)
   }
 );
   
