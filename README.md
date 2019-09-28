@@ -17,38 +17,43 @@ Node.js and npm
 <ul>
 <li>
 Inside the app directory, write the following command to install the necessary dependencies:
+</li>
 ```
 npm install
 ```
-</li>
+
 
 <li>
 To create a production build:
+</li>
 ```
 npm run build
 ```
-</li>
+
 
 <li>
 To run the static front-end application:
+</li>
 ```
 npm run client
 ```
-</li>
+
 
 <li>
 To run the express server that serves the front-end application:
+</li>
 ```
 npm start
 ```
-</li>
+
 
 <li>
 To run the server and front-end concurrently:
+</li>
 ```
 npm run dev
 ```
-</li>
+
 
 </ul>
 
