@@ -46,7 +46,7 @@ npm run dev
 
 ## Deployment
 
-PM2 and NGINX were used for the deployment of this website on DigitalOcean
+PM2 and NGINX are used for the deployment of this website on DigitalOcean
 
 ## Author
 
