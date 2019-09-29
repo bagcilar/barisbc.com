@@ -17,7 +17,7 @@ class App extends Component {
   render() {
     return (
 
-      <BrowserRouter >
+      <HashRouter >
 
           <div className="content">
 
@@ -32,7 +32,7 @@ class App extends Component {
 
           </div>
 
-      </BrowserRouter>
+      </HashRouter>
 
 
 );
