@@ -3,11 +3,13 @@ import { Form, Button, Divider, Modal, Icon, Progress, Checkbox } from 'semantic
 import './css/grader.css';
 
 class grader extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
             components: [{ name: "", weight: "", mark: "" }],
             markingScheme: 'percentage',
+            style: 'dark',
             showReport: false,
             showModal: false
         };
@@ -39,23 +41,24 @@ class grader extends React.Component {
 
     //handles the dynamic UI creation that involves name, weight, mark fields and associated remove buttons
     createUI() {
+
         return this.state.components.map((el, i) => (
-            <div class="ui form" key={i}>
+            <div class="ui form" key={i} >
 
                 <div class="inline fields" className="UIComponents">
 
-                    <div class="field">
-                        <input id="nameField" type="text" placeholder="name" name="name" value={el.name || ''} onChange={this.handleChange.bind(this, i)} />
+                    <div class="field" style={{backgroundColor: 'black'}}>
+                        <input style={this.getStyleConfig("fields")} id="nameField" type="text" placeholder="name" name="name" value={el.name || ''} onChange={this.handleChange.bind(this, i)} />
                     </div>
 
                     <div className="WeightMarkInputs">
 
                         <div class="field">
-                            <input id="weightField" className="weightField" type="number" placeholder="weight" name="weight" value={el.weight || ''} onChange={this.handleChange.bind(this, i)} />
+                            <input style={this.getStyleConfig("fields")} id="weightField" className="weightField" type="number" placeholder="weight" name="weight" value={el.weight || ''} onChange={this.handleChange.bind(this, i)} />
                         </div>
 
                         <div class="field">
-                            <input id="markField" type="number" placeholder={this.state.markingScheme} name="mark" value={el.mark || ''} onChange={this.handleChange.bind(this, i)} />
+                            <input style={this.getStyleConfig("fields")} id="markField" type="number" placeholder={this.state.markingScheme} name="mark" value={el.mark || ''} onChange={this.handleChange.bind(this, i)} />
                         </div>
 
                     </div>
@@ -80,9 +83,9 @@ class grader extends React.Component {
     //handles the output of feedback, final mark, and report
     output() {
 
-        var reportArray = this.report();
-        var showing = this.state.showReport;
-        var buttonCaption;
+        let reportArray = this.report();
+        let showing = this.state.showReport;
+        let buttonCaption;
         if (showing) {
             buttonCaption = "Hide Report"
         } else {
@@ -91,7 +94,8 @@ class grader extends React.Component {
 
         return (
 
-            <div id="outputFields" class="ui segment">
+
+            <div id="outputFields" class="ui segment" style={this.getStyleConfig("fields")}>
 
                 <div>
                     <p>Final Mark: {this.marker()}</p>
@@ -109,8 +113,8 @@ class grader extends React.Component {
 
                 <div class="ui divider" id="homePageUpperDivider"></div>
 
-                <button id="showReportButton" onClick={() => this.setState({ showReport: !showing })}>{buttonCaption}</button>
-
+                <button class={this.getStyleConfig("reportButton")} onClick={() => this.setState({ showReport: !showing })}>{buttonCaption}</button>
+               
                 {showing
                     ?
                     <div id="reportSection">
@@ -132,6 +136,29 @@ class grader extends React.Component {
         )
     }
 
+    //contains the help modal, add/remove/reset, selectScheme, input fields
+    input(){
+        return(
+
+            <div id="UI" class="ui segment" style={this.getStyleConfig("fields")}>
+
+                <div className="UITop">
+                    {this.modal()}
+                    {this.selectScheme()}
+                </div>
+
+                <div className="UIMiddle">
+                    {this.addResetButtons()}
+                </div>
+
+                <div className="UIBottom">
+                    {this.createUI()}                   
+                </div>
+
+            </div>
+        )
+    }
+
     //obtains the selected performance option for calculation purposes
     changeScheme(e) {
         this.setState({ markingScheme: e.target.value });
@@ -140,7 +167,7 @@ class grader extends React.Component {
     //handles the toggling between 'percentage' and 'mark' performances
     selectScheme() {
 
-        var perButtonStyle, markButtonStyle;
+        let perButtonStyle, markButtonStyle;
 
         if (this.state.markingScheme === "percentage") {
             perButtonStyle = "ui positive button active"
@@ -153,7 +180,6 @@ class grader extends React.Component {
         return (
             <div id="schemeToggleDiv" class="ui buttons">
                 <button id="percToggleButton" class={perButtonStyle} onClick={this.changeScheme.bind(this)} value="percentage">%</button>
-                <div class="or"></div>
                 <button id="markToggleButton" class={markButtonStyle} onClick={this.changeScheme.bind(this)} value="mark">mark</button>
             </div>
         )
@@ -171,11 +197,10 @@ class grader extends React.Component {
         this.setState({ components });
     }
 
-
     //calculates final mark
     marker() {
         let components = [...this.state.components];
-        var finalGrade = 0;
+        let finalGrade = 0;
 
         for (let i = 0; i < components.length; i++) {
 
@@ -196,7 +221,7 @@ class grader extends React.Component {
     //calculates lost marks
     lostFeedback() {
         let components = [...this.state.components];
-        var lost = 0;
+        let lost = 0;
         for (let i = 0; i < components.length; i++) {
             if (components[i].weight !== "" && components[i].mark !== "") {
 
@@ -213,7 +238,7 @@ class grader extends React.Component {
     //calculates accumulated marks
     accumulatedFeedback() {
         let components = [...this.state.components];
-        var acc = 0;
+        let acc = 0;
         for (let i = 0; i < components.length; i++) {
 
             if (components[i].weight !== "" && components[i].mark !== "") {
@@ -231,11 +256,11 @@ class grader extends React.Component {
     //provides report that shows the required performances for grade points
     report() {
         let components = [...this.state.components];
-        var totalAccumulated = this.accumulatedFeedback();
-        var totalEnteredWeight = 0;
-        var totalUnmarkedWeight = 0;
-        var unmarkedWeights = [];
-        var report = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
+        let totalAccumulated = this.accumulatedFeedback();
+        let totalEnteredWeight = 0;
+        let totalUnmarkedWeight = 0;
+        let unmarkedWeights = [];
+        let report = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
 
 
         for (let i = 0; i < components.length; i++) {
@@ -257,8 +282,8 @@ class grader extends React.Component {
         }
 
         if (totalEnteredWeight === 100 && this.errorCheck() !== "") {
-            var index = 0;
-            var cutoff;
+            let index = 0;
+            let cutoff;
             for (let i = 94.5; i > 49; i -= 5) {
 
                 if (this.state.markingScheme === 'percentage') {
@@ -283,9 +308,9 @@ class grader extends React.Component {
 
     //error is returned if weights do not total 100 or if all marks are not entered
     errorCheck() {
-        var errorMessage = "";
-        var components = this.state.components;
-        var totalWeight = 0;
+        let errorMessage = "";
+        let components = this.state.components;
+        let totalWeight = 0;
 
         for (let i = 0; i < components.length; i++) {
             totalWeight = totalWeight + parseFloat(components[i].weight);
@@ -319,7 +344,7 @@ class grader extends React.Component {
     //modal that shows instructions
     modal() {
 
-        var button = <button id="modalTrigger" class="ui inverted blue button" onClick={this.handleOpen}>help</button>
+        let button = <button id="modalTrigger" class={this.getStyleConfig("helpButton")} onClick={this.handleOpen}>help</button>
 
         return (
             <Modal
@@ -327,8 +352,8 @@ class grader extends React.Component {
                 open={this.state.showModal}
                 onClose={this.handleClose}
                 basic
-                size='small'
-            >
+                size='small'>
+            
                 <Modal.Content>
                     <p>● Enter weights as percentages /100. The weights in total should equal 100</p>
                     <p>● When a weight and mark is added for a given component, you will be presented with continuous feedback</p>
@@ -356,7 +381,7 @@ class grader extends React.Component {
     //progress bar that shows the cumulated marks
     showProgress() {
 
-        var progress = this.accumulatedFeedback().toString() + "%";
+        let progress = this.accumulatedFeedback().toString() + "%";
 
         return (
 
@@ -369,39 +394,98 @@ class grader extends React.Component {
         )
     }
 
+    //obtains the selected view mode and sets the state
+    changeViewMode(e){
+        this.setState({ style: e.target.value });
+    }
+
+    //handles the toggling between light and dark modes
+    selectViewMode(){
+ 
+        return (
+            <div class="ui buttons">
+                <button id="lightToggleButton" class={this.getStyleConfig("viewButtons")[0]} onClick={this.changeViewMode.bind(this)} value="light">light</button>
+                <button id="darkToggleButton" class={this.getStyleConfig("viewButtons")[1]} onClick={this.changeViewMode.bind(this)} value="dark">dark</button>
+            </div>
+        )
+    }
+
+    //returns the style configuration based on state and based on the parameter
+    getStyleConfig(specs){
+
+        if (specs === "fields"){
+            const darkStyle = {
+                backgroundColor: 'rgb(24, 26, 27',
+                color: 'grey',
+                borderColor: 'grey',
+            }
+    
+            const lightStyle = {
+                backgroundColor: 'white',
+                color: 'black',
+                //borderColor: 'rgb(20, 20, 20)'
+            }
+    
+            if (this.state.style === "light"){
+                return lightStyle;
+            } else{
+                return darkStyle;
+            }
+
+        } else if (specs === "viewButtons"){
+
+            let darkButtonClass, lightButtonClass, orButtonStyle;
+            if (this.state.style === "light") {
+                lightButtonClass = "ui secondary button"
+                darkButtonClass = "ui inverted secondary button"
+            } else {
+                darkButtonClass = "ui red button"
+                lightButtonClass = "ui inverted secondary button"
+            }
+
+            return [lightButtonClass, darkButtonClass];
+
+        } else if (specs === "helpButton") {
+            let modalButtonClass = "ui inverted blue button";
+            if (this.state.style === "light"){
+                modalButtonClass = "ui blue button";
+            }
+            return modalButtonClass;
+        } else if (specs === "reportButton") {
+            let reportButtonClass = "ui inverted blue button";
+            if (this.state.style === "light"){
+                reportButtonClass = "ui blue button";
+            }
+            return reportButtonClass;
+        }
+
+    }
 
     render() {
 
+        
+
         return (
 
-            <div className="graderDiv">
+            <div className="GraderDiv" style={this.getStyleConfig("fields")}>
 
-                <div className="container">
+                <div className="InputOutputSections" >
 
+                    <div className="InputSection">
+                        {this.input()}
+                    </div>
 
-                    <div id="UI" class="ui segment">
-
-                        <div className="UITop">
-                            {this.modal()}
-                            {this.selectScheme()}
-                        </div>
-
-                        <div className="UIMiddle">
-                            {this.addResetButtons()}
-                        </div>
-
-                        <div className="UIBottom">
-                            {this.createUI()}
-                        </div>
-
+                    <div className="OutputSection">
+                        {this.showProgress()}
+                        {this.output()}
                     </div>
 
                 </div>
 
-                <div className="OutputSection">
-                    {this.showProgress()}
-                    {this.output()}
+                <div className="ViewToggleDiv">
+                    {this.selectViewMode()}
                 </div>
+
 
 
             </div>

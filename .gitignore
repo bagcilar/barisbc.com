@@ -10,8 +10,8 @@
 
 # production
 
-# config folder
-
+# config file
+/src/server/config/config.js
 
 # misc
 .DS_Store
