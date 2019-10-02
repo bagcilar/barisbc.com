@@ -356,6 +356,8 @@ class grader extends React.Component {
             
                 <Modal.Content>
                     <p>● Enter weights as percentages /100. The weights in total should equal 100</p>
+                    <p>● If you choose to add performances as marks, add mark/weight. e.g., if you've received 30/40 on a component, simply enter 30</p>
+                    <p>● If you choose to add performances as percentages, add percentage/100. e.g., if you received 80% on an assignment, enter 80</p>
                     <p>● When a weight and mark is added for a given component, you will be presented with continuous feedback</p>
                     <p>● When all weights and marks are added, the final mark will appear automatically</p>
                     <p>● If you press 'show report', you  will be presented with the performance necessary to obtain the specified grade points</p>

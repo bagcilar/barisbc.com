@@ -9,9 +9,10 @@
 /coverage
 
 # production
+/build
 
 # config file
-/src/server/config/config.js
+/src/server/config
 
 # misc
 .DS_Store
