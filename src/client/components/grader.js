@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button, Divider, Modal, Icon, Progress, Checkbox } from 'semantic-ui-react'
+import ankaraninbaglari from '../res/ankaraninbaglari.mp3'
+import Sound from 'react-sound';
 import './css/grader.css';
 
 class grader extends React.Component {
@@ -11,9 +13,12 @@ class grader extends React.Component {
             markingScheme: 'percentage',
             style: 'dark',
             showReport: false,
-            showModal: false
+            showModal: false,
+            music: false,
+            easterEggFound: false
         };
     }
+
 
     //handles the addition of a component
     addClick() {
@@ -85,11 +90,11 @@ class grader extends React.Component {
 
         let reportArray = this.report();
         let showing = this.state.showReport;
-        let buttonCaption;
+        let reportButtonCaption;
         if (showing) {
-            buttonCaption = "Hide Report"
+            reportButtonCaption = "Hide Report"
         } else {
-            buttonCaption = "Show Report"
+            reportButtonCaption = "Show Report"
         }
 
         return (
@@ -113,7 +118,7 @@ class grader extends React.Component {
 
                 <div class="ui divider" id="homePageUpperDivider"></div>
 
-                <button class={this.getStyleConfig("reportButton")} onClick={() => this.setState({ showReport: !showing })}>{buttonCaption}</button>
+                <button class={this.getStyleConfig("reportButton")} onClick={() => this.setState({ showReport: !showing })}>{reportButtonCaption}</button>
                
                 {showing
                     ?
@@ -417,7 +422,7 @@ class grader extends React.Component {
 
         if (specs === "fields"){
             const darkStyle = {
-                backgroundColor: 'rgb(24, 26, 27',
+                backgroundColor: 'rgb(24, 26, 27)',
                 color: 'grey',
                 borderColor: 'grey',
             }
@@ -425,7 +430,7 @@ class grader extends React.Component {
             const lightStyle = {
                 backgroundColor: 'white',
                 color: 'black',
-                //borderColor: 'rgb(20, 20, 20)'
+                boxShadow: '0 2px 2px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12)'
             }
     
             if (this.state.style === "light"){
@@ -463,9 +468,64 @@ class grader extends React.Component {
 
     }
 
-    render() {
+    music(){
 
-        
+        if (this.state.music === true){
+            return(
+                <div>
+                    <audio src={ankaraninbaglari} loop autoPlay />
+                </div>
+            )
+        }
+    }
+
+    togglePavyonMode(){
+
+        let pavyonButtonStyle = {}
+        let pavyonButtonClass = "";
+
+        if (this.state.easterEggFound === false){
+            if (this.state.style === 'dark'){
+                pavyonButtonStyle = {
+                    outline: '0',
+                    color: 'rgb(24, 26, 27)',
+                    background: 'transparent',
+                    border: 'none'
+                }
+            } else{
+                pavyonButtonStyle = {
+                    outline: '0',
+                    color: 'white',
+                    background: 'transparent',
+                    border: 'none'
+                }
+            }
+
+        } else{
+            pavyonButtonClass = "ui inverted purple button"
+        }
+        let playing = this.state.music;
+
+        let pavyonModeCaption;
+        if (playing){
+            pavyonModeCaption = "uninitialize payvon mode"
+        } else {
+            pavyonModeCaption = "reinitialize payvon mode"
+        }
+
+        return (
+            <div>
+                <button style={pavyonButtonStyle} class={pavyonButtonClass} id="pavyonButton" onClick={() => this.setState({ music: !playing, easterEggFound: true})}>{pavyonModeCaption}</button>
+            </div>
+        )
+    }
+
+    // if (!this.state.easterEggFound){
+    //     alert("HOŞ GELDİNİZ ELLER HAVAYA!")
+    // }
+
+
+    render() {
 
         return (
 
@@ -486,6 +546,8 @@ class grader extends React.Component {
 
                 <div className="ViewToggleDiv">
                     {this.selectViewMode()}
+                    {this.music()}
+                    {this.togglePavyonMode()}
                 </div>
 
 
@@ -493,6 +555,9 @@ class grader extends React.Component {
             </div>
         );
     }
+
+    
+
 }
 
 export default grader;

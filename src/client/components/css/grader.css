@@ -32,6 +32,9 @@
 
 .ViewToggleDiv{
   padding: 3%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 
@@ -122,4 +125,10 @@ button:hover {
 .GraderDiv{
   display: flex;
   flex-direction: column;
+}
+
+#pavyonButton{
+  max-width: 8vh;
+  max-height: 5vh;
+  font-size: 10px;
 }
