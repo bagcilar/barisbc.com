@@ -12,7 +12,7 @@
 /build
 
 # config file
-/src/server/config
+/src/server/config/config.js
 
 # misc
 .DS_Store
