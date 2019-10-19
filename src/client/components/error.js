@@ -8,7 +8,7 @@ class error extends Component {
 
       <div className="errorSection">
 
-        <img className="errorPicture" src={errorPicture} />
+        <img className="errorPicture" src={errorPicture} alt="404"/>
 
         <div className="errorMessage">
           <p>oops! page not found...</p>

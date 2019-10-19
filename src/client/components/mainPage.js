@@ -10,10 +10,6 @@ import HelperFunctions from './helperFunctions.js';
 
 class mainPage extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     return (

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Form, Button, Divider, Modal, Icon } from 'semantic-ui-react'
 import axios from 'axios';
 
 import './css/contact.css';
@@ -16,7 +15,7 @@ class ContactMe extends Component {
         if (!this.errorCheck(name, email, message)) {
             axios({
                 method: "POST",
-                url: "http://localhost:3001/send",
+                url: "http://localhost:3001/email",
                 data: {
                     name: name,
                     email: email,
@@ -36,11 +35,11 @@ class ContactMe extends Component {
     //error checking for form fields
     errorCheck(name, email, message) {
 
-        if (name == "" || email == "" || message == "") {
+        if (name === "" || email === "" || message === "") {
 
-            if (name == "") {
+            if (name === "") {
                 alert("Please enter your name");
-            } else if (email == "") {
+            } else if (email === "") {
                 alert("Please enter your email");
             } else {
                 alert("Please enter a message");

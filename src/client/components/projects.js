@@ -9,7 +9,6 @@ var graderDescription = "Enter your marks for components of a course, receive co
 
 class Projects extends Component {
 
-
     render() {
 
         return (
@@ -26,7 +25,7 @@ class Projects extends Component {
 
                     <NavLink to="/grader" id="graderNav">
                         <div className="navSection">
-                            <img src={graderPicture} className="graderImage" />
+                            <img src={graderPicture} className="graderImage" alt="Grader"/>
                             <div className="textSection">
                                 <h1>Grader</h1>
                                 <div class="ui divider" ></div>
@@ -36,9 +35,9 @@ class Projects extends Component {
                     </NavLink>
 
 
-                    <NavLink to="" id="domainFinderNav">
+                    <NavLink to="/domainfinder" id="domainFinderNav">
                         <div className="navSection">
-                            <img src={domainFinderPicture} className="domainFinderImage" />
+                            <img src={domainFinderPicture} className="domainFinderImage" alt="Domain Finder"/>
                             <div className="textSection">
                                 <h1>Domain Finder</h1>
                                 <div class="ui divider" ></div>
@@ -51,7 +50,7 @@ class Projects extends Component {
 
                     <NavLink to="" id="sleepClockNav">
                         <div className="navSection">
-                            <img src={sleepClockPicture} className="sleepClockImage" />
+                            <img src={sleepClockPicture} className="sleepClockImage" alt="Sleep Clock"/>
                             <div className="textSection">
                                 <h1>Sleep Clock</h1>
                                 <div class="ui divider" ></div>
@@ -60,7 +59,6 @@ class Projects extends Component {
                             </div>
                         </div>
                     </NavLink>
-
 
                 </div>
 

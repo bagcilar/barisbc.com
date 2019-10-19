@@ -1,27 +1,14 @@
-import React, { Component } from 'react';
-import './css/test.css';
-import githubIcon from '../res/github.png'
-import linkedinIcon from '../res/linkedin.png'
-import instaIcon from '../res/instagram.png'
-import { Popup, Card, Image, Rating, Segment, Reveal, Visibility, Progress } from 'semantic-ui-react'
-import graderPicture from '../res/grader.png'
 
-import { NavLink } from "react-router-dom"
+var promise1 = new Promise((resolve, reject) => {
+  setTimeout(function() {
+    resolve('foo');
+  }, 3000);
+});
 
-var graderDescription = "Enter your marks for components of a course, receive continuous feedback, and dynamically calculate your final grade";
+promise1.then(function(value) {
+  console.log("promise finished");
+  // expected output: "foo"
+});
 
-
-class testapp extends Component {
-
-  render() {
-    return (
-
-      <div></div>
-
-    );
-  }
-}
-
-export default testapp;
-
-
+console.log(promise1);
+// expected output: [object Promise]

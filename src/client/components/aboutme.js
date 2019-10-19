@@ -25,7 +25,7 @@ class AboutMe extends Component {
           <div class="ui divider" ></div>
         </div>
 
-        <img className="profilePicture" src={profilePicture} />
+        <img className="profilePicture" src={profilePicture} alt="Profile"/>
 
         <div className="aboutMeTextDiv">
           <div className="aboutMePart1">

@@ -21,10 +21,6 @@ export function sectionHeaderColourAdj(target) {
 
 class helperFunctions extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   //listens for scrolling events
   componentDidMount() {
     window.addEventListener('scroll', this.onWindowScroll);
@@ -39,7 +35,7 @@ class helperFunctions extends Component {
     var aboutBounding = document.getElementById("aboutMeSection").getBoundingClientRect();
     var projectsBounding = document.getElementById("projectsSection").getBoundingClientRect();
     var contactBounding = document.getElementById("contactSection").getBoundingClientRect();
-    var threshold = 70;
+    var threshold = 90;
 
     if (homeBounding.top > -threshold && homeBounding.top < threshold) {
       navColourAdjuster("homeSectionButton")

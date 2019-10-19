@@ -26,7 +26,7 @@ class navBar extends Component {
     }
     else if (location === "projects") {
       position *= 2;
-    } else if (location == "contact") {
+    } else if (location === "contact") {
       position = document.body.scrollHeight;
     }
 
@@ -45,7 +45,7 @@ class navBar extends Component {
     var element = document.getElementById(target);
 
     //checks if hovered item is in view, if so sets the state
-    if (element.style.color == "brown") {
+    if (element.style.color === "brown") {
       this.setState({ lastHovered: target })
     }
 

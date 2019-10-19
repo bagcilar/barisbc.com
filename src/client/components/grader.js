@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { Form, Button, Divider, Modal, Icon, Progress, Checkbox } from 'semantic-ui-react'
+import React from 'react';
+import {Button, Modal, Icon} from 'semantic-ui-react'
 import ankaraninbaglari from '../res/ankaraninbaglari.mp3'
-import Sound from 'react-sound';
 import './css/grader.css';
 
 class grader extends React.Component {
@@ -441,7 +440,7 @@ class grader extends React.Component {
 
         } else if (specs === "viewButtons"){
 
-            let darkButtonClass, lightButtonClass, orButtonStyle;
+            let darkButtonClass, lightButtonClass;
             if (this.state.style === "light") {
                 lightButtonClass = "ui secondary button"
                 darkButtonClass = "ui inverted secondary button"
@@ -520,11 +519,6 @@ class grader extends React.Component {
         )
     }
 
-    // if (!this.state.easterEggFound){
-    //     alert("HOŞ GELDİNİZ ELLER HAVAYA!")
-    // }
-
-
     render() {
 
         return (
@@ -550,9 +544,8 @@ class grader extends React.Component {
                     {this.togglePavyonMode()}
                 </div>
 
-
-
             </div>
+            
         );
     }
 
