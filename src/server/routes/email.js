@@ -1,13 +1,12 @@
-var express = require('express');
-var router = express.Router();
-var nodemailer = require('nodemailer');
+const express = require('express');
+const router = express.Router();
+const nodemailer = require('nodemailer');
 const creds = require('../config/config.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.send('HELLO!');
 });
-
 
 var transport = {
   service: 'gmail',
@@ -27,7 +26,7 @@ transporter.verify((error, success) => {
   }
 });
 
-router.post('/send', (req, res, next) => {
+router.post('/', (req, res, next) => {
   var name = req.body.name
   var email = req.body.email
   var message = req.body.message
