@@ -14,9 +14,9 @@ var transport = {
     user: creds.USER,
     pass: creds.PASS
   }
-}
+};
 
-var transporter = nodemailer.createTransport(transport)
+var transporter = nodemailer.createTransport(transport);
 
 transporter.verify((error, success) => {
   if (error) {
@@ -37,6 +37,28 @@ router.post('/', (req, res, next) => {
     to: 'barisbcemail@gmail.com',
     subject: 'New Message from barisbc.com',
     text: content
+  };
+
+  transporter.sendMail(mail, (err, data) => {
+    if (err) {
+      res.json({
+        msg: 'fail'
+      })
+    } else {
+      res.json({
+        msg: 'success'
+      })
+    }
+  })
+})
+
+router.post('/visited', (req, res, next) => {
+  let time = req.body.timeSent
+  var mail = {
+    from: 'barisbc.com',
+    to: 'barisbcemail@gmail.com',
+    subject: 'Someone has visited your website!',
+    text: 'time sent: ' + time
   }
 
   transporter.sendMail(mail, (err, data) => {

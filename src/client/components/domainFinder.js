@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import Button from 'semantic-ui-react'
-
 import axios from 'axios';
+import isValidDomain from 'is-valid-domain';
 import './css/domainFinder.css';
+import creds from '../../server/config/config';
+
 
 class DomainFinder extends Component {
 
@@ -25,7 +27,7 @@ class DomainFinder extends Component {
     if (!this.errorCheck(domainName)) {
       axios({
           method: "POST",
-          url: "http://localhost:3001/domainFinder",
+          url: creds.DOMAIN_FINDER_URL,
           data: {
             domain: domainName
           }
@@ -52,26 +54,50 @@ class DomainFinder extends Component {
   
   //error checking for form fields
   errorCheck(domainInput) {
-      if (domainInput === "") {         
-        alert("Please enter a domain name");
+      if (!domainInput) {         
+        alert("Please enter a domain");
+        return true;
+      } else if (!isValidDomain(domainInput)){
+        alert("Please enter a valid domain");
         return true;
       } else {
-          return false;
+        return false;
       }
   }
 
   output(){
 
     let availability = this.state.availability;
-    let dName = this.state.domainName;
-    let registrar = this.state.registrar;
-    let rCountry = this.state.rCountry;
-    let cDate = this.state.cDate;
-    let eDate = this.state.eDate;
 
-    if (!availability) {
+    if (availability === false) {
+
+      const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      let dName = this.state.domainName;
+      let registrar = this.state.registrar;
+      let rCountry = this.state.rCountry;
+  
+      let cDateRaw = this.state.cDate;  
+      let cYear = cDateRaw.substring(15, 19);
+      let cMonthNumber = parseInt(cDateRaw.substring(20, 22));
+      let cDay = cDateRaw.substring(23, 25);
+      let cMonth = months[cMonthNumber - 1];
+      let cDate = "Creation date: " + cDay + " " + cMonth + ", " + cYear;
+  
+      let eDate;
+      let eDateRaw = this.state.eDate;
+  
+      if (eDateRaw != null) {
+        eDateRaw = this.state.eDate.substring(23, this.state.eDate.length);
+        let eYear = eDateRaw.substring(17, 21);
+        let eMonthNumber = parseInt(eDateRaw.substring(22, 24));
+        let eDay = eDateRaw.substring(25, 27);
+        let eMonth = months[eMonthNumber - 1];
+        eDate = "Expiration date: " + eDay + " " + eMonth + ", " + eYear;
+      }
+
       return(
-        <div>
+        <div className="outputTextDiv">
           <p>{availability}</p>
           <p>{dName}</p>
           <p>{registrar}</p>
@@ -80,13 +106,17 @@ class DomainFinder extends Component {
           <p>{eDate}</p>
         </div>
       )
-    } else {
+
+    } else if (availability === true){
+
       return(
-        <div>
+        <div className="outputTextDiv">
           <p>This domain is available!</p>
         </div>
       )
+
     }
+    
   }
 
   componentDidMount(){
@@ -114,7 +144,7 @@ class DomainFinder extends Component {
           </div>
 
           <div className="outputDiv">
-            {this.output()}
+              {this.output()}
           </div>
 
         </div>

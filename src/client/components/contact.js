@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
 import './css/contact.css';
+import creds from '../../server/config/config';
 
 class ContactMe extends Component {
 
@@ -15,7 +15,7 @@ class ContactMe extends Component {
         if (!this.errorCheck(name, email, message)) {
             axios({
                 method: "POST",
-                url: "http://localhost:3001/email",
+                url: creds.CONTACT_URL,
                 data: {
                     name: name,
                     email: email,

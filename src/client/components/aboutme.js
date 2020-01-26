@@ -33,7 +33,6 @@ class AboutMe extends Component {
             <p align="center">My name is Baris, I'm an undergraduate CS student at York University in Toronto, ON</p>
           </div>
           <div className="aboutMePart2">
-            <p align="center">I am currently looking for a co-op position for Winter 2020. On this website, you can see some minor projects I'm working on</p>
             <p align="center">Go <span> <button id="contactTextButton" onClick={() => { this.scroll() }} >here</button> </span> if you'd like to contact me!</p>
           </div>
           <div class="ui divider" ></div>

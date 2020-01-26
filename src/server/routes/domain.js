@@ -2,15 +2,13 @@ const express = require('express');
 const router = express.Router();
 const whois = require('whois')
 
-
-
 router.get('/', function(req, res, next) {
     res.send('HELLO!');
 });
 
 router.post('/', function(req, res, next) {
 
-    domain = req.body.domain;
+    const domain = req.body.domain;
 
     let promise = new Promise((resolve, reject) => {
 

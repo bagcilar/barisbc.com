@@ -38,19 +38,19 @@ class helperFunctions extends Component {
     var threshold = 90;
 
     if (homeBounding.top > -threshold && homeBounding.top < threshold) {
-      navColourAdjuster("homeSectionButton")
+      navColourAdjuster("homeSectionButton");
       sectionHeaderColourAdj("contactHeader")
     }
     else if (aboutBounding.top > -threshold && aboutBounding.top < threshold) {
-      navColourAdjuster("aboutSectionButton")
+      navColourAdjuster("aboutSectionButton");
       sectionHeaderColourAdj("aboutHeader")
     }
     else if (projectsBounding.top > -threshold && projectsBounding.top < threshold) {
-      navColourAdjuster("projectsSectionButton")
+      navColourAdjuster("projectsSectionButton");
       sectionHeaderColourAdj("projectsHeader")
     }
     else if (contactBounding.top > -threshold && contactBounding.top < threshold) {
-      navColourAdjuster("contactSectionButton")
+      navColourAdjuster("contactSectionButton");
       sectionHeaderColourAdj("contactHeader")
     }
   }

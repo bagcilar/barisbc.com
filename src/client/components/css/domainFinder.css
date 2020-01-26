@@ -12,17 +12,24 @@
 }
 
 .outputDiv{
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(236, 236, 236);
     width: 70%;
     margin-left: 15%;
     margin-right: 15%;
-    margin-top: 3%;
-    height: 0;
+    margin-top: 2%;
 }
+
+.outputTextDiv{
+    padding: 2%;
+    font-family: "Montserrat";
+    font-size: 125%;
+}
+
 #searchButton{
     margin-top: 1%;
 }
 
 #domainName{
     font-family: "Montserrat";
+    font-size: 115%;
 }

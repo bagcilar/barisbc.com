@@ -5,7 +5,8 @@ import graderPicture from '../res/grader.png'
 import domainFinderPicture from '../res/domainFinder.png'
 import sleepClockPicture from '../res/sleepClock.png'
 
-var graderDescription = "Enter your marks for components of a course, receive continuous feedback, dynamically calculate your final grade";
+let graderDescription = "Enter your marks for components of a course, receive continuous feedback, dynamically calculate your final grade";
+let domainFinderDescription = "Check whether or not a domain is registered. If it is, the registrar, registrant country, creation and expiration dates are provided";
 
 class Projects extends Component {
 
@@ -20,7 +21,6 @@ class Projects extends Component {
                     <div class="ui divider" ></div>
                 </div>
 
-
                 <div className="projectList">
 
                     <NavLink to="/grader" id="graderNav">
@@ -34,19 +34,16 @@ class Projects extends Component {
                         </div>
                     </NavLink>
 
-
                     <NavLink to="/domainfinder" id="domainFinderNav">
                         <div className="navSection">
                             <img src={domainFinderPicture} className="domainFinderImage" alt="Domain Finder"/>
                             <div className="textSection">
                                 <h1>Domain Finder</h1>
                                 <div class="ui divider" ></div>
-                                <p>This app is currently under construction</p>
-                                <p>Please try again later...</p>
+                                {domainFinderDescription}
                             </div>
                         </div>
                     </NavLink>
-
 
                     <NavLink to="" id="sleepClockNav">
                         <div className="navSection">
